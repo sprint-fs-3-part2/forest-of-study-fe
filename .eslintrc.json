@@ -5,12 +5,7 @@
     "node": true
   },
   "parser": "babel-eslint",
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "airbnb",
-    "plugin:prettier/recommended"
-  ],
+  "extends": ["eslint:recommended", "plugin:react/recommended", "airbnb", "plugin:prettier/recommended", "plugin:storybook/recommended"],
   "settings": {
     "react": {
       "version": "detect"
