@@ -1,13 +1,13 @@
 import { ComponentPropsWithoutRef } from 'react';
 
-type CommonBtnVariant = 'submit' | 'cancel';
+type CommonBtnVariant = 'confirm' | 'cancel';
 
-type CommonBtnWidth = 'full' | 'half' | 'dynamic';
+type CommonBtnWidthType = 'full' | 'half' | 'dynamic';
 
-type CommonBtnHeight = 'fixed' | 'dynamic';
+type CommonBtnHeightType = 'fixed' | 'dynamic';
 
 export interface CommonBtnProps extends ComponentPropsWithoutRef<'button'> {
-  variant: CommonBtnVariant;
-  width: CommonBtnWidth;
-  height: CommonBtnHeight;
+  variant?: CommonBtnVariant;
+  widthType: CommonBtnWidthType;
+  heightType: CommonBtnHeightType;
 }
