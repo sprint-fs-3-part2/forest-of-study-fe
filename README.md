@@ -41,6 +41,28 @@ npm run dev
 npm run storybook
 ```
 
+### 백엔드에서 Swagger 타입 받아오기
+
+- 먼저 백엔드 프로젝트 경로(forest-of-study-be) 루트에서 최신 커밋을 반영합니다.
+
+```bash
+git pull origin main
+```
+
+- 백엔드 프로젝트 경로(forest-of-study-be) 루트에서 아래 명령어로 백엔드 서버를 실행합니다.
+
+```bash
+npm run start:dev
+```
+
+- 아래 커맨드 실행 시 Swagger에 있는 타입들이 src/lib/types/api 디렉터리에 생성됩니다.
+
+```bash
+# swagger-typescript-api devDependency 설치와 동시에 Swagger 문서를 타입으로 추출함
+npm run codegen
+```
+
+
 ## 권장 VS Code 확장팩
 
 <details>
