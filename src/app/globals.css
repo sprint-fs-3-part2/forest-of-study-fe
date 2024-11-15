@@ -5,6 +5,44 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* color name from figma */
+  /* Base colors */
+  --background: #ffffff;
+  --foreground: #171717;
+
+  /* Black & Gray colors */
+  --black: #414141;
+  --gray: #818181;
+  --gray-light: #DDDDDD;
+  --gray-lighter: #EEEEEE;
+
+  /* Background colors */
+  --bg-primary: #F6F4EF;
+
+  /* Brand colors */
+  --brand: #99C08E;
+
+  /* Green colors */
+  --green: #E1EDDE;
+  --green-text: #578246;
+
+  /* Red colors */
+  --error: #C41013;
+  --red: #F50E0E;
+  --error-bg: #FFA3A5;
+
+  /* Yellow colors */
+  --yellow: #FFF1CC;
+  --yellow-text: #C18E1B;
+
+  /* Blue colors */
+  --blue: #E0F1F5;
+  --blue-text: #418099;
+
+  /* Pink colors */
+  --pink: #FDE0E9;
+  --pink-text: #BC3C6A;
 }
 
 @media (prefers-color-scheme: dark) {
