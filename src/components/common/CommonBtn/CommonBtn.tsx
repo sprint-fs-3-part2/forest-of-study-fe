@@ -33,7 +33,8 @@ export function CommonBtn({
           'w-full': widthType === 'full',
           'w-[calc(50%-8px)] md:w-[calc(50%-12px)] xl:w-[calc(50%-12px)]':
             widthType === 'half',
-          'w-[106px] md:w-[160px] xl:w-[252px]': widthType === 'dynamic',
+          'w-[106px] md:w-[160px] xl:w-[252px] text-[12px] md:text-[18px] xl:text-[18px] rounded-[12px] md:rounded-[14px] xl:rounded-[16px]':
+            widthType === 'dynamic',
         },
         {
           'h-[52px]': heightType === 'fixed',
