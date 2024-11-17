@@ -8,7 +8,7 @@ import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import copy from 'copy-to-clipboard';
 
 const ADDON_ID = 'myaddon';
-const PANEL_ID = 'myaddon/panel';
+const PANEL_ID = `${ADDON_ID}/panel`;
 const PARAM_KEY = 'codeExample';
 
 const CustomCodeBlock = ({ language, value }) => {
