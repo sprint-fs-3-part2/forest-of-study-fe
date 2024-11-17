@@ -70,7 +70,7 @@ const ReactionTagOnPageProps: IconTagProps = {
   variant: 'reaction',
   parentComponent: 'page',
   fillColor: 'black',
-  emoji: '😍',
+  icon: '😍',
   text: '35',
 };
 
@@ -88,7 +88,7 @@ const ReactionTagOnCardWithImageProps: IconTagProps = {
   parentComponent: 'card',
   fillColor: 'black',
   backgroundType: 'image',
-  emoji: '😍',
+  icon: '😍',
   text: '35',
 };
 
@@ -106,7 +106,7 @@ const ReactionTagOnCardWithColorProps: IconTagProps = {
   parentComponent: 'card',
   fillColor: 'black',
   backgroundType: 'color',
-  emoji: '😍',
+  icon: '😍',
   text: '35',
 };
 

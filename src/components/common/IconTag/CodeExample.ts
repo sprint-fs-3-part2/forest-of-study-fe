@@ -6,8 +6,8 @@ const CodeSnippet = ({
   fillColor,
   backgroundType,
   text,
-  emoji,
   icon,
+  className,
 }: IconTagProps) => `
 /** 경로는 상황에 맞게 사용 **/
 /** 반응 추가 버튼은 icon에 addReactionIcon 입력 **/
@@ -22,8 +22,8 @@ import pointIcon from '@/public/icons/point_icon.png';
         fillColor=${fillColor}
         text=${text}
         ${(backgroundType && `backgroundType=${backgroundType}`) || ''}        
-        ${(emoji && `emoji=${emoji}`) || ''}
-        ${(icon && `icon=icon reference`) || ''}
+        ${(icon && `icon=${icon}`) || ''}
+        ${(className && `className=${className}`) || ''}
     />
 `;
 

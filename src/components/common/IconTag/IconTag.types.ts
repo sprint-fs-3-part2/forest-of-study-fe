@@ -6,7 +6,6 @@ export interface IconTagProps {
   fillColor: 'white' | 'black';
   backgroundType?: 'color' | 'image';
   text: string;
-  emoji?: string;
-  icon?: StaticImport;
+  icon: StaticImport | string;
   className?: string;
 }

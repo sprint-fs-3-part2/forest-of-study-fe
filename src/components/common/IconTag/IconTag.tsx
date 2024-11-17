@@ -44,7 +44,6 @@ export function IconTag({
   backgroundType,
   text,
   icon,
-  emoji,
   className,
 }: IconTagProps) {
   return (
@@ -67,14 +66,15 @@ export function IconTag({
               OPACITY[fillColor][parentComponent],
       )}
     >
-      {icon && (
+      {typeof icon === 'string' ? (
+        <p className={FONT_SIZE[parentComponent]}>{icon}</p>
+      ) : (
         <Image
           width={parentComponent === 'page' ? 16 : 12}
           src={icon}
           alt='포인트 아이콘'
         />
       )}
-      {emoji && <p className={FONT_SIZE[parentComponent]}>{emoji}</p>}
       <p className={FONT_SIZE[parentComponent]}>{text}</p>
     </div>
   );
