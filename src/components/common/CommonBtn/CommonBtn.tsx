@@ -10,7 +10,7 @@ const VARIANTS = {
     background: 'bg-[#DDDDDD]',
     shadow: '0 -3px 0 #999999',
   },
-} as const;
+};
 
 export function CommonBtn({
   variant = 'confirm',

@@ -2,7 +2,7 @@ import { CommonBtnProps } from './CommonBtn.types';
 
 const CodeSnippet = ({ variant, widthType, heightType }: CommonBtnProps) => `
 /** 경로는 상황에 맞게 사용 **/
-import { CommonBtn } from '@/components/common/CommonBtn/CommonBtn';
+import { CommonBtn } from '@/components/common/CommonBtn';
 
     <CommonBtn
         variant=${variant}
