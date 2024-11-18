@@ -28,10 +28,12 @@ export default function RootLayout({
   return (
     <html lang='ko'>
       <body
-        className={`${pretendard.variable} ${jejudoldam.variable} antialiased`}
+        className={`${pretendard.variable} ${jejudoldam.variable} antialiased min-h-dvh`}
       >
-        <GNB />
-        {children}
+        <header>
+          <GNB />
+        </header>
+        <main>{children}</main>
       </body>
     </html>
   );

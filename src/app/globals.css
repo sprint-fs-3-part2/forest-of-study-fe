@@ -55,3 +55,15 @@ body {
     font-family: var(--font-pretendard-variable);
   }
 }
+
+@layer components {
+  .heading-2 {
+    @apply font-extrabold text-2xl
+  }
+  .caption-base {
+    @apply font-medium text-xl text-gray
+  }
+  .base-container {
+    @apply bg-white rounded-[20px] p-10
+  }
+}
