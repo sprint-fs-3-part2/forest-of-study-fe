@@ -3,11 +3,11 @@ import cn from '@/lib/cn';
 
 const VARIANTS = {
   submit: {
-    background: 'bg-[#99C08E]',
-    shadow: '0 -3px 0 #578246',
+    background: 'bg-brand',
+    shadow: '0 -3px 0 var(--green-text)',
   },
   cancel: {
-    background: 'bg-[#DDDDDD]',
+    background: 'bg-gray-light',
     shadow: '0 -3px 0 #999999',
   },
 } as const;
@@ -20,7 +20,7 @@ export function CommonBtn({
   onClick,
   type = 'button',
   ...props
-}: CommonBtnProps) {
+}: Readonly<CommonBtnProps>) {
   return (
     <button
       onClick={onClick}

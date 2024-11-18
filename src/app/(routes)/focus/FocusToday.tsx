@@ -32,7 +32,7 @@ type ButtonProps = {
 
 const Button = ({ children }: ButtonProps) => {
   return (
-    <button className='border-[1px] border-[#DDDDDD] rounded-2xl py-3 pl-6 pr-4 flex'>
+    <button className='border border-gray-light rounded-2xl py-3 pl-6 pr-4 flex'>
       {children}
       {rightArrowIcon && (
         <Image
@@ -49,7 +49,7 @@ const Button = ({ children }: ButtonProps) => {
 export const Point = () => {
   return (
     <div className='mb-6'>
-      <p className='text-[#818181]'>현재까지 획득한 포인트</p>
+      <p className='text-gray'>현재까지 획득한 포인트</p>
       {/* <IconTag  /> */}
       <p>IconTag 공통 컴포넌트 필요</p>
     </div>
@@ -57,10 +57,11 @@ export const Point = () => {
 };
 
 export const Timer = () => {
+  // TODO: 현우님과 상의 필요
   const [time, setTime] = useState('25:00');
 
   return (
-    <div className='border-[1px] border-[#DDDDDD] rounded-[20px] flex flex-col justify-around items-center h-[546px]'>
+    <div className='border border-gray-light rounded-[20px] flex flex-col justify-around items-center h-[546px]'>
       <h2 className='font-extrabold text-2xl'>오늘의 집중</h2>
       <span className='font-extrabold text-[150px]'>{time}</span>
       start! 공통 컴포넌트 필요
