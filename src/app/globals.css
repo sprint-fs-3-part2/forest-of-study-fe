@@ -13,36 +13,39 @@
 
   /* Black & Gray colors */
   --black: #414141;
+  --black-50: rgba(0, 0, 0, 0.5);
+  --black-40: rgba(0, 0, 0, 0.4);
+  --black-10: rgba(0, 0, 0, 0.1);
   --gray: #818181;
-  --gray-light: #DDDDDD;
-  --gray-lighter: #EEEEEE;
+  --gray-light: #dddddd;
+  --gray-lighter: #eeeeee;
 
   /* Background colors */
-  --bg-primary: #F6F4EF;
+  --bg-primary: #f6f4ef;
 
   /* Brand colors */
-  --brand: #99C08E;
+  --brand: #99c08e;
 
   /* Green colors */
-  --green: #E1EDDE;
+  --green: #e1edde;
   --green-text: #578246;
 
   /* Red colors */
-  --error: #C41013;
-  --red: #F50E0E;
-  --error-bg: #FFA3A5;
+  --error: #c41013;
+  --red: #f50e0e;
+  --error-bg: #ffa3a5;
 
   /* Yellow colors */
-  --yellow: #FFF1CC;
-  --yellow-text: #C18E1B;
+  --yellow: #fff1cc;
+  --yellow-text: #c18e1b;
 
   /* Blue colors */
-  --blue: #E0F1F5;
+  --blue: #e0f1f5;
   --blue-text: #418099;
 
   /* Pink colors */
-  --pink: #FDE0E9;
-  --pink-text: #BC3C6A;
+  --pink: #fde0e9;
+  --pink-text: #bc3c6a;
 }
 
 @media (prefers-color-scheme: dark) {
