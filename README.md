@@ -41,6 +41,10 @@ npm run dev
 npm run storybook
 ```
 
+### 스토리북 배포
+
+<https://6738bbad6db7ed66b949ad4d-pnhtxuerkm.chromatic.com/>
+
 ### 백엔드에서 Swagger 타입 받아오기
 
 - 먼저 백엔드 프로젝트 경로(forest-of-study-be) 루트에서 최신 커밋을 반영합니다.
@@ -61,7 +65,6 @@ npm run start:dev
 # swagger-typescript-api devDependency 설치와 동시에 Swagger 문서를 타입으로 추출함
 npm run codegen
 ```
-
 
 ## 권장 VS Code 확장팩
 
