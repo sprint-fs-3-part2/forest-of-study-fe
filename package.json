@@ -9,7 +9,8 @@
     "lint": "next lint",
     "tailwind": "npx tailwindcss -i ./src/input.css -o ./src/output.css --watch",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "codegen": "npx swagger-typescript-api -p http://localhost:8000/api-json -r -o ./src/lib/types/api --modular -d --extract-request-body --extract-response-body --extract-response-error --axios"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -40,6 +41,7 @@
     "react-markdown": "^9.0.1",
     "react-syntax-highlighter": "^15.6.1",
     "storybook": "^8.4.2",
+    "swagger-typescript-api": "^13.0.23",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }

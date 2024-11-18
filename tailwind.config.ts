@@ -11,6 +11,37 @@ const config: Config = {
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
+        black: 'var(--black)',
+        gray: {
+          DEFAULT: 'var(--gray)',
+          light: 'var(--gray-light)',
+          lighter: 'var(--gray-lighter)',
+        },
+        bg: {
+          primary: 'var(--bg-primary)',
+        },
+        brand: 'var(--brand)',
+        green: {
+          DEFAULT: 'var(--green)',
+          text: 'var(--green-text)',
+        },
+        error: {
+          DEFAULT: 'var(--error)',
+          bg: 'var(--error-bg)',
+        },
+        red: 'var(--red)',
+        yellow: {
+          DEFAULT: 'var(--yellow)',
+          text: 'var(--yellow-text)',
+        },
+        blue: {
+          DEFAULT: 'var(--blue)',
+          text: 'var(--blue-text)',
+        },
+        pink: {
+          DEFAULT: 'var(--pink)',
+          text: 'var(--pink-text)',
+        },
       },
       screens: {
         sm: '375px',
