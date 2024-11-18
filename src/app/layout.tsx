@@ -1,8 +1,7 @@
-import Image from 'next/image';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
-import { CommonBtn } from '@/components/common/CommonBtn';
+import { GNB } from '@/components/layout';
 
 const pretendard = localFont({
   src: './fonts/PretendardVariable.woff2',
@@ -28,12 +27,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ko'>
-      <body className={`${pretendard.variable} ${jejudoldam.variable} antialiased`}>
-        {/* 임시 */}
-        <header className='flex justify-between'>
-          <Image src='/img_logo.svg' alt='공부의 숲 로고' width={181} height={60} />
-          <CommonBtn>스터디 만들기</CommonBtn>
-        </header>
+      <body
+        className={`${pretendard.variable} ${jejudoldam.variable} antialiased`}
+      >
+        <GNB />
         {children}
       </body>
     </html>

@@ -1,8 +1,11 @@
+'use client';
+
 import Image from 'next/image';
-import Logo from '@/public/img_logo.svg';
+import Logo from '@/public/image/img_logo.svg';
 import { CommonBtn } from '@/components/common/CommonBtn';
 import cn from '@/lib/cn';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 export function GNB() {
   const pathname = usePathname();
@@ -16,11 +19,13 @@ export function GNB() {
         'py-[31px] md:py-[21px] xl:py-[21px]',
       )}
     >
-      <Image
-        className={cn('w-[106px] md:w-[181px] xl:w-[181px]')}
-        src={Logo}
-        alt='로고 이미지'
-      />
+      <Link href='/'>
+        <Image
+          className={cn('w-[106px] md:w-[181px] xl:w-[181px]')}
+          src={Logo}
+          alt='공부의 숲 로고 이미지'
+        />
+      </Link>
       {pathname === '/' ? (
         <CommonBtn
           widthType='dynamic'
