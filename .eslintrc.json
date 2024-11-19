@@ -1,29 +1,49 @@
 {
+  "parser": "@typescript-eslint/parser",
   "env": {
     "browser": true,
     "es6": true,
     "node": true
   },
-  "parser": "babel-eslint",
-  "extends": ["eslint:recommended", "plugin:react/recommended", "airbnb", "plugin:prettier/recommended", "plugin:storybook/recommended"],
+  "extends": [
+    "next",
+    "next/core-web-vitals",
+    "next/typescript",
+    "plugin:storybook/recommended",
+    "prettier"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "requireConfigFile": false,
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
   "settings": {
     "react": {
       "version": "detect"
     }
   },
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": 2018,
-    "sourceType": "module"
-  },
-  "plugins": ["react", "react-hooks", "prettier"],
+  "plugins": [
+    "@typescript-eslint",
+    "import",
+    "jsx-a11y",
+    "storybook",
+    "react",
+    "react-hooks"
+  ],
   "rules": {
-    "react/react-in-jsx-scope": 0,
-    "react/prefer-stateless-function": 0,
-    "react/jsx-filename-extension": 0,
-    "react/jsx-one-expression-per-line": 0,
-    "no-nested-ternary": 0
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
+    ]
   }
 }

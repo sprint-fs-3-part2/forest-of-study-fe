@@ -1,4 +1,5 @@
-import { CommonBtnProps } from './CommonBtn.types';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import type { CommonBtnProps } from './CommonBtn.types';
 import cn from '@/lib/cn';
 
 const VARIANTS = {

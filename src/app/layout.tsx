@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
@@ -26,7 +27,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ko'>
-      <body className={`${pretendard.variable} ${jejudoldam.variable} antialiased`}>{children}</body>
+      <body
+        className={`${pretendard.variable} ${jejudoldam.variable} antialiased`}
+      >
+        {children}
+      </body>
     </html>
   );
 }
