@@ -1,4 +1,4 @@
-import { StaticImport } from 'next/dist/shared/lib/get-img-props';
+import type { StaticImageData } from 'next/image';
 
 export interface IconTagProps {
   variant: 'point' | 'reaction';
@@ -6,6 +6,9 @@ export interface IconTagProps {
   fillColor: 'white' | 'black';
   backgroundType?: 'color' | 'image';
   text: string;
-  icon: StaticImport | string;
+  icon:
+    | StaticImageData
+    | { src: string; width: number; height: number }
+    | string;
   className?: string;
 }
