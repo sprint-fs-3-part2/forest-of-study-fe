@@ -20,12 +20,11 @@ export function CommonBtn({
   className,
   type = 'button',
   children,
-  disabled = false,
+  ...props
 }: Readonly<CommonBtnProps>) {
   return (
     <button
       type={type}
-      disabled={disabled}
       className={cn(
         className,
         'font-jejudoldam rounded-2xl text-[18px] text-white',
@@ -46,6 +45,7 @@ export function CommonBtn({
       style={{
         textShadow: VARIANTS[variant].shadow,
       }}
+      {...props}
     >
       {children}
     </button>

@@ -7,27 +7,39 @@
   --foreground: #171717;
 
   --black: #414141;
+  --black-50: rgba(0, 0, 0, 0.5);
+  --black-40: rgba(0, 0, 0, 0.4);
+  --black-10: rgba(0, 0, 0, 0.1);
   --gray: #818181;
-  --gray-light: #DDDDDD;
-  --gray-lighter: #EEEEEE;
+  --gray-light: #dddddd;
+  --gray-lighter: #eeeeee;
 
-  --brand: #99C08E;
+  /* Background colors */
+  --bg-primary: #f6f4ef;
 
-  --green: #E1EDDE;
+  /* Brand colors */
+  --brand: #99c08e;
+
+  /* Green colors */
+  --green: #e1edde;
   --green-text: #578246;
 
-  --error: #C41013;
-  --red: #F50E0E;
-  --error-bg: #FFA3A5;
+  /* Red colors */
+  --error: #c41013;
+  --red: #f50e0e;
+  --error-bg: #ffa3a5;
 
-  --yellow: #FFF1CC;
-  --yellow-text: #C18E1B;
+  /* Yellow colors */
+  --yellow: #fff1cc;
+  --yellow-text: #c18e1b;
 
-  --blue: #E0F1F5;
+  /* Blue colors */
+  --blue: #e0f1f5;
   --blue-text: #418099;
 
-  --pink: #FDE0E9;
-  --pink-text: #BC3C6A;
+  /* Pink colors */
+  --pink: #fde0e9;
+  --pink-text: #bc3c6a;
 }
 
 /* 다크모드 적용하게 되면 사용

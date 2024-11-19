@@ -19,17 +19,21 @@ export function GNB() {
         'py-[31px] md:py-[21px] xl:py-[21px]',
       )}
     >
-      <Link href='/'>
-        <Image
-          className={cn('w-[106px] md:w-[181px] xl:w-[181px]')}
-          src={Logo}
-          alt='공부의 숲 로고 이미지'
-        />
-      </Link>
+      <Image
+        className={cn('w-[106px] md:w-[181px] xl:w-[181px]')}
+        src={Logo}
+        width={181}
+        height={60}
+        alt='로고 이미지'
+        priority
+        quality={90}
+      />
       {pathname === '/' ? (
         <CommonBtn
           widthType='dynamic'
           heightType='dynamic'
+          aria-label='새로운 스터디 그룹 만들기'
+          data-testid='create-study-button'
         >
           스터디 만들기
         </CommonBtn>

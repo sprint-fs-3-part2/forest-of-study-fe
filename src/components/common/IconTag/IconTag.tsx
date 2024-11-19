@@ -22,17 +22,18 @@ const OPACITY = {
   white: 'text-black bg-white/30',
   black: {
     card: {
-      color: 'text-white bg-black/50',
-      image: 'text-white bg-black/40',
+      color: 'text-white bg-black-50',
+      image: 'text-white bg-black-40',
+      default: 'text-white bg-black-50',
     },
-    page: 'text-white bg-black/50',
+    page: 'text-white bg-black-50',
   },
 };
 
 const BORDER = {
-  point: 'border border-black/10',
+  point: 'border border-black-10',
   reaction: {
-    white: 'border border-black/10',
+    white: 'border border-black-10',
     black: '',
   },
 };
@@ -46,25 +47,50 @@ export function IconTag({
   icon,
   className,
 }: IconTagProps) {
+  if (parentComponent === 'card' && fillColor === 'black' && !backgroundType) {
+    throw new Error(
+      'backgroundType은 parentComponent가 card이고 fillColor가 black일 때 필수입니다.',
+    );
+  }
+
+  const getStyleClasses = () => {
+    const baseClasses = [
+      'rounded-[50px]',
+      'flex justify-between items-center',
+      'w-fit gap-[5px]',
+      'font-normal',
+      FONT_SIZE[parentComponent],
+      PADDING[parentComponent][variant],
+    ];
+    if (variant === 'point') {
+      baseClasses.push(BORDER[variant]);
+    }
+
+    if (variant === 'reaction') {
+      baseClasses.push(BORDER[variant][fillColor]);
+    }
+
+    if (fillColor === 'white') {
+      baseClasses.push(OPACITY[fillColor]);
+    }
+
+    if (fillColor === 'black') {
+      if (parentComponent === 'card' && backgroundType) {
+        baseClasses.push(OPACITY[fillColor][parentComponent][backgroundType]);
+      } else if (parentComponent === 'page') {
+        baseClasses.push(OPACITY[fillColor][parentComponent]);
+      }
+    }
+    className && baseClasses.push(className);
+
+    return baseClasses;
+  };
+
   return (
     <div
-      className={cn(
-        'rounded-[50px]',
-        'flex justify-between items-center',
-        'w-fit gap-[5px]',
-        'font-normal',
-        className,
-        FONT_SIZE[parentComponent],
-        PADDING[parentComponent][variant],
-        variant === 'point' && BORDER[variant],
-        variant === 'reaction' && BORDER[variant][fillColor],
-        fillColor === 'white' && OPACITY[fillColor],
-        backgroundType && fillColor === 'black' && parentComponent === 'card'
-          ? OPACITY[fillColor][parentComponent][backgroundType]
-          : fillColor === 'black' &&
-              parentComponent === 'page' &&
-              OPACITY[fillColor][parentComponent],
-      )}
+      className={cn(getStyleClasses())}
+      role='note'
+      aria-label={`${text}${typeof icon === 'string' ? ` ${icon}` : ''} 태그`}
     >
       {typeof icon === 'string' ? (
         <p className={FONT_SIZE[parentComponent]}>{icon}</p>
@@ -72,7 +98,7 @@ export function IconTag({
         <Image
           width={parentComponent === 'page' ? 16 : 12}
           src={icon}
-          alt='포인트 아이콘'
+          alt={`${text}관련 아이콘`}
         />
       )}
       <p className={FONT_SIZE[parentComponent]}>{text}</p>

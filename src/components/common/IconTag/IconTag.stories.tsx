@@ -6,7 +6,7 @@ import { IconTagProps } from './IconTag.types';
 import { codeExample } from './CodeExample';
 
 export default {
-  title: 'IconTag',
+  title: 'common/IconTag',
   component: IconTag,
   tags: ['autodocs'],
 } satisfies Meta<typeof IconTag>;
