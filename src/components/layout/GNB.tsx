@@ -19,7 +19,11 @@ export function GNB() {
         'py-[31px] md:py-[21px] xl:py-[21px]',
       )}
     >
-      <Link href='/'>
+      <Link
+        href='/'
+        aria-label='홈으로 이동'
+        prefetch={true}
+      >
         <Image
           className={cn('w-[106px] md:w-[181px] xl:w-[181px]')}
           src={Logo}
@@ -31,7 +35,10 @@ export function GNB() {
         />
       </Link>
       {pathname === '/' ? (
-        <Link href='/study/create'>
+        <Link
+          href='/study/create'
+          prefetch={true}
+        >
           <CommonBtn
             widthType='dynamic'
             heightType='dynamic'
