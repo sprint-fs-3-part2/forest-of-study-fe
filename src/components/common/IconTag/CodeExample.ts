@@ -17,13 +17,13 @@ import addReactionIcon from '@/public/icons/add_reaction_icon.png';
 import pointIcon from '@/public/icons/point_icon.png';
 
     <IconTag
-        variant=${variant}
-        parentComponent=${parentComponent}
-        fillColor=${fillColor}
-        text=${text}
-        ${(backgroundType && `backgroundType=${backgroundType}`) || ''}
+        variant="${variant}"
+        parentComponent="${parentComponent}"
+        fillColor="${fillColor}"
+        text="${text}"
+        ${(backgroundType && `backgroundType="${backgroundType}"`) || ''}
         ${(icon && `icon=${icon}`) || ''}
-        ${(className && `className=${className}`) || ''}
+        ${(className && `className="${className}"`) || ''}
     />
 `;
 
