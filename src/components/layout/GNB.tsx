@@ -19,7 +19,11 @@ export function GNB() {
       <Image
         className={cn('w-[106px] md:w-[181px] xl:w-[181px]')}
         src={Logo}
+        width={181}
+        height={60}
         alt='로고 이미지'
+        priority
+        quality={90}
       />
       {pathname === '/' ? (
         <CommonBtn
