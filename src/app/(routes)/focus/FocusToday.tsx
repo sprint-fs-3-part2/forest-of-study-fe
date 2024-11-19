@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 'use client';
 
 import Image from 'next/image';
@@ -58,7 +59,7 @@ export const Point = () => {
 
 export const Timer = () => {
   // TODO: 현우님과 상의 필요
-  const [time, setTime] = useState('25:00');
+  const [time] = useState('25:00');
 
   return (
     <div className='border border-gray-light rounded-[20px] flex flex-col justify-around items-center h-[546px]'>

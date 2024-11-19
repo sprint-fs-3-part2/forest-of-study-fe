@@ -1,4 +1,5 @@
 import { CommonBtn } from './CommonBtn';
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import type { Meta, StoryFn } from '@storybook/react';
 
 export default {
