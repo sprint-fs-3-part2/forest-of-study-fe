@@ -3,11 +3,11 @@ import cn from '@/lib/cn';
 
 const VARIANTS = {
   confirm: {
-    background: 'bg-[#99C08E]',
-    shadow: '0 -3px 0 #578246',
+    background: 'bg-brand',
+    shadow: '0 -3px 0 var(--green-text)',
   },
   cancel: {
-    background: 'bg-[#DDDDDD]',
+    background: 'bg-gray-light',
     shadow: '0 -3px 0 #999999',
   },
 };
@@ -18,9 +18,8 @@ export function CommonBtn({
   heightType,
   className,
   type = 'button',
-  children,
-  disabled = false,
-}: CommonBtnProps) {
+  ...props
+}: Readonly<CommonBtnProps>) {
   return (
     <button
       type={type}

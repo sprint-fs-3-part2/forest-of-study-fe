@@ -3,15 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
+  --background: #F6F4EF;
   --foreground: #171717;
 
-  /* color name from figma */
-  /* Base colors */
-  --background: #ffffff;
-  --foreground: #171717;
-
-  /* Black & Gray colors */
   --black: #414141;
   --black-50: rgba(0, 0, 0, 0.5);
   --black-40: rgba(0, 0, 0, 0.4);
@@ -48,12 +42,13 @@
   --pink-text: #bc3c6a;
 }
 
+/* 다크모드 지원시
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
   color: var(--foreground);
