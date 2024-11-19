@@ -47,21 +47,13 @@ const Timer = () => {
         </div>
 
         {/* 타이머 */}
-        {secondsLeft >= 10 && (
-          <span className='font-extrabold xl:text-[150px] md:text-[120px] sm:text-[80px] max-sm:text-[80px]'>
-            {formattedMinutes + ':' + formattedSeconds}
-          </span>
-        )}
-        {secondsLeft < 10 && secondsLeft >= 0 && (
-          <span className='font-extrabold text-red xl:text-[150px] md:text-[120px] sm:text-[80px]'>
-            {formattedMinutes + ':' + formattedSeconds}
-          </span>
-        )}
-        {secondsLeft < 0 && (
-          <span className='font-extrabold text-gray xl:text-[150px] md:text-[120px] sm:text-[80px]'>
-            {formattedMinutes + ':' + formattedSeconds}
-          </span>
-        )}
+        <span
+          className={`font-extrabold text-[150px] ${
+            secondsLeft < 0 ? 'text-gray' : secondsLeft < 10 ? 'text-red' : ''
+          }`}
+        >
+          {formattedMinutes + ':' + formattedSeconds}
+        </span>
 
         {/* 타이머 관련 버튼 */}
         <div className='flex justify-between gap-6'>

@@ -15,6 +15,10 @@ type TimerReturnType = {
 };
 
 const useTimer = (initialTime: number): TimerReturnType => {
+  if (initialTime < 0) {
+    throw new Error('초기 시간은 0보다 작을 수 없습니다.');
+  }
+
   const [isPaused, setIsPaused] = useState<boolean>(true); // 일시정지 상태
   const [secondsLeft, setSecondsLeft] = useState<number>(initialTime); // 남은 시간
   const [showGetPointNotification, setGetPointShowNotification] =
@@ -23,6 +27,7 @@ const useTimer = (initialTime: number): TimerReturnType => {
 
   const secondsLeftRef = useRef<number>(secondsLeft);
   const isPausedRef = useRef<boolean>(isPaused);
+  let hideNotificationTimeout: NodeJS.Timeout;
 
   // 1초마다 실행되는 함수
   const tick = () => {
@@ -65,7 +70,7 @@ const useTimer = (initialTime: number): TimerReturnType => {
     setGetPointShowNotification(true);
 
     // 3초 후 알림창 숨김
-    setTimeout(() => {
+    hideNotificationTimeout = setTimeout(() => {
       setGetPointShowNotification(false);
     }, 3000);
 
@@ -77,9 +82,12 @@ const useTimer = (initialTime: number): TimerReturnType => {
     const interval = setInterval(() => {
       if (isPausedRef.current) return;
       tick();
-    }, 1000);
+    }, 10);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      clearTimeout(hideNotificationTimeout);
+    };
   }, []);
 
   const minutes = Math.floor(secondsLeft / 60);

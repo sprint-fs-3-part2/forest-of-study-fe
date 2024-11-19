@@ -4,8 +4,17 @@
  */
 
 export const formatTimeForTimer = (minutes: number, seconds: number) => {
-  const absMinutes = Math.abs(minutes);
-  const absSeconds = Math.abs(seconds);
+  // 유효하지 않은 입력값 처리
+  if (!Number.isFinite(minutes) || !Number.isFinite(seconds)) {
+    throw new Error('유효하지 않은 입력값입니다.');
+  }
+
+  // 초 정규화 (예: 75초 -> 1분 15초)
+  const normalizedMinutes = minutes + Math.floor(seconds / 60);
+  const normalizedSeconds = seconds % 60;
+
+  const absMinutes = Math.abs(normalizedMinutes);
+  const absSeconds = Math.abs(normalizedSeconds);
   // 타이머 화면 표시 처리 (양수일 때 & 음수일 때)
   const formattedMinutes =
     absMinutes < 10
