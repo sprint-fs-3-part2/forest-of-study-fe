@@ -111,7 +111,7 @@ const Timer = () => {
   }
 
   return (
-    <div className='border-[1px] border-[#DDDDDD] rounded-[20px] flex flex-col justify-around items-center h-[546px]'>
+    <div className='border border-gray-light rounded-[20px] flex flex-col justify-around items-center h-[546px]'>
       {/* 타이머 제목 */}
       <h2 className='font-extrabold text-2xl'>오늘의 집중</h2>
 
@@ -122,12 +122,12 @@ const Timer = () => {
         </span>
       )}
       {secondsLeft < 10 && secondsLeft >= 0 && (
-        <span className='font-extrabold text-[150px] text-[#F50E0E]'>
+        <span className='font-extrabold text-[150px] text-red'>
           {formattedMinutes + ':' + formattedSeconds}
         </span>
       )}
       {secondsLeft < 0 && (
-        <span className='font-extrabold text-[150px] text-[#818181]'>
+        <span className='font-extrabold text-[150px] text-gray'>
           {formattedMinutes + ':' + formattedSeconds}
         </span>
       )}
@@ -158,7 +158,7 @@ const Timer = () => {
         {secondsLeft < 0 && (
           <button
             onClick={handleReset}
-            className='text-[#818181]'
+            className='text-gray'
           >
             stop!
           </button>
