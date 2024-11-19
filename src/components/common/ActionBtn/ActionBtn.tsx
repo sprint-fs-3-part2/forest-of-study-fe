@@ -40,8 +40,6 @@ export function ActionBtn({
       type='button'
       className={cn(
         'w-full',
-        'pl-[78px]',
-        'pr-[105px]',
         'flex items-center justify-center flex-row',
         BG_COLOR[variant],
         WIDTH[variant],

@@ -82,8 +82,8 @@ export function IconTag({
   return (
     <div
       className={cn(getStyleClasses())}
-      role='status'
-      aria-label={`${text} 태그`}
+      role='note'
+      aria-label={`${text}${typeof icon === 'string' ? ` ${icon}` : ''} 태그`}
     >
       {typeof icon === 'string' ? (
         <p className={FONT_SIZE[parentComponent]}>{icon}</p>
