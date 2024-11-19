@@ -2,7 +2,6 @@ import { ComponentPropsWithoutRef } from 'react';
 
 export interface LinkBtnProps
   extends Pick<ComponentPropsWithoutRef<'button'>, 'onClick' | 'disabled'> {
-  children: React.ReactNode;
+  children: string | number;
   className?: string;
-  iconSize?: number;
 }

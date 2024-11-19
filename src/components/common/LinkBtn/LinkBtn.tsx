@@ -3,12 +3,9 @@ import ArrowRightIcon from '@/public/icons/ic_arrow_right.png';
 import { LinkBtnProps } from './LinkBtn.types';
 import cn from '@/lib/cn';
 
-export function LinkBtn({
-  children,
-  className,
-  iconSize = 24,
-  ...props
-}: LinkBtnProps) {
+export function LinkBtn({ children, className, ...props }: LinkBtnProps) {
+  const ICON_SIZE = 24;
+
   return (
     <button
       className={cn(
@@ -17,12 +14,12 @@ export function LinkBtn({
       )}
       {...props}
     >
-      <p>{children}</p>
+      <span>{children}</span>
       <Image
         src={ArrowRightIcon}
         alt='오른쪽 화살표 이미지'
-        width={iconSize}
-        height={iconSize}
+        width={ICON_SIZE}
+        height={ICON_SIZE}
       ></Image>
     </button>
   );
