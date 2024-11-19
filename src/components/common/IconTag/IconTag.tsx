@@ -22,17 +22,17 @@ const OPACITY = {
   white: 'text-black bg-white/30',
   black: {
     card: {
-      color: 'text-white bg-black/50',
-      image: 'text-white bg-black/40',
+      color: 'text-white bg-black-50',
+      image: 'text-white bg-black-40',
     },
-    page: 'text-white bg-black/50',
+    page: 'text-white bg-black-50',
   },
 };
 
 const BORDER = {
-  point: 'border border-black/10',
+  point: 'border border-black-10',
   reaction: {
-    white: 'border border-black/10',
+    white: 'border border-black-10',
     black: '',
   },
 };
