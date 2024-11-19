@@ -1,3 +1,5 @@
+'use client';
+
 import { ModalProps } from './Modal.types';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';

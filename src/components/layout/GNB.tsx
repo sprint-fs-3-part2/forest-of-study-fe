@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import Logo from '@/public/img_logo.svg';
 import { CommonBtn } from '@/components/common/CommonBtn';
