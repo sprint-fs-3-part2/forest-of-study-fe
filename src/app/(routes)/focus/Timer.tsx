@@ -1,60 +1,18 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import useTimer from '@/hooks/useTimer';
 
 const Timer = () => {
   const initTime = 25 * 60; // 25분
-  const [isPaused, setIsPaused] = useState(true); // 일시정지 상태
-  const [secondsLeft, setSecondsLeft] = useState(initTime); // 남은 시간
-
-  const secondsLeftRef = useRef(secondsLeft);
-  const isPausedRef = useRef(isPaused);
-
-  // 1초마다 실행되는 함수
-  const tick = () => {
-    secondsLeftRef.current--;
-    setSecondsLeft(secondsLeftRef.current);
-  };
-
-  // 멈춤 및 진행 기능
-  const handlePause = () => {
-    setIsPaused(!isPaused);
-    isPausedRef.current = !isPaused;
-  };
-
-  // 초기화 기능
-  const handleReset = () => {
-    setIsPaused(true);
-    isPausedRef.current = true;
-    setSecondsLeft(initTime);
-    secondsLeftRef.current = initTime;
-  };
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (isPausedRef.current) return;
-      tick();
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  // 타이머 화면 표시 처리 (양수일 때)
-  const minutes = Math.floor(secondsLeft / 60);
-  let formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
-  const seconds = secondsLeft % 60;
-  let formattedSeconds = seconds < 10 ? '0' + seconds : seconds;
-
-  // 타이머 화면 표시 처리 (음수일 때)
-  if (minutes < 0) {
-    formattedMinutes =
-      Math.abs(minutes + 1) < 10
-        ? '-0' + Math.abs(minutes + 1)
-        : Math.abs(minutes + 1);
-
-    formattedSeconds =
-      Math.abs(seconds) < 10 ? '0' + Math.abs(seconds) : Math.abs(seconds);
-  }
+  const {
+    secondsLeft,
+    isPaused,
+    formattedMinutes,
+    formattedSeconds,
+    start,
+    pause,
+    reset,
+  } = useTimer(initTime);
 
   return (
     <div className='border border-gray-light rounded-[20px] flex flex-col justify-around items-center h-[546px]'>
@@ -81,29 +39,29 @@ const Timer = () => {
       {/* 타이머 관련 버튼 */}
       <div className='flex justify-between gap-6'>
         {secondsLeft === initTime && (
-          <button onClick={handlePause}> start! 가능 </button>
+          <button onClick={start}> start! 가능 </button>
         )}
         {secondsLeft !== initTime && secondsLeft >= 0 && (
           <>
             <button
               disabled={isPaused}
-              onClick={isPaused ? undefined : handlePause}
+              onClick={isPaused ? undefined : pause}
             >
               {isPaused ? 'stop불가능' : 'stop 가능'}
             </button>
 
             <button
               disabled={!isPaused}
-              onClick={isPaused ? handlePause : undefined}
+              onClick={isPaused ? start : undefined}
             >
               {isPaused ? 'start! 가능' : 'start! 불가능'}
             </button>
-            <button onClick={handleReset}> reset</button>
+            <button onClick={reset}> reset</button>
           </>
         )}
         {secondsLeft < 0 && (
           <button
-            onClick={handleReset}
+            onClick={reset}
             className='text-gray'
           >
             stop!
