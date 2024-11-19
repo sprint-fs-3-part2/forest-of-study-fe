@@ -5,7 +5,6 @@ import Logo from '@/public/image/img_logo.svg';
 import { CommonBtn } from '@/components/common/CommonBtn';
 import cn from '@/lib/cn';
 import { usePathname } from 'next/navigation';
-import Link from 'next/link';
 
 export function GNB() {
   const pathname = usePathname();
