@@ -1,3 +1,4 @@
+import { formatTimeForTimer } from '@/utils/formatTimeForTimer';
 import { useEffect, useRef, useState } from 'react';
 
 const useTimer = (initialTime: number) => {
@@ -42,22 +43,12 @@ const useTimer = (initialTime: number) => {
     return () => clearInterval(interval);
   }, []);
 
-  // 타이머 화면 표시 처리 (양수일 때)
   const minutes = Math.floor(secondsLeft / 60);
-  let formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
   const seconds = secondsLeft % 60;
-  let formattedSeconds = seconds < 10 ? '0' + seconds : seconds;
-
-  // 타이머 화면 표시 처리 (음수일 때)
-  if (minutes < 0) {
-    formattedMinutes =
-      Math.abs(minutes + 1) < 10
-        ? '-0' + Math.abs(minutes + 1)
-        : Math.abs(minutes + 1);
-
-    formattedSeconds =
-      Math.abs(seconds) < 10 ? '0' + Math.abs(seconds) : Math.abs(seconds);
-  }
+  const { formattedMinutes, formattedSeconds } = formatTimeForTimer(
+    minutes,
+    seconds,
+  );
 
   return {
     secondsLeft,
