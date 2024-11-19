@@ -13,7 +13,7 @@ import { Modal } from '@/components/common/Modal/Modal';
 `;
 
 export const codeExample = (props: CodeSnippetProps) => `
-# IconTag.tsx
+# Modal.tsx
 \`\`\`tsx
 ${CodeSnippet(props)}
 \`\`\`

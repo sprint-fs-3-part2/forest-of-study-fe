@@ -5,9 +5,9 @@ const CodeSnippet = ({ variant, widthType, heightType }: CommonBtnProps) => `
 import { CommonBtn } from '@/components/common/CommonBtn/CommonBtn';
 
     <CommonBtn
-        variant=${variant}
-        widthType=${widthType}
-        heightType=${heightType}
+        variant="${variant}"
+        widthType="${widthType}"
+        heightType="${heightType}"
     />
 `;
 
