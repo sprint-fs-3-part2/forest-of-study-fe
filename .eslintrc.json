@@ -16,7 +16,7 @@
     "ecmaFeatures": {
       "jsx": true
     },
-    "ecmaVersion": 2020,
+    "ecmaVersion": "latest",
     "sourceType": "module"
   },
   "settings": {
@@ -24,11 +24,7 @@
       "version": "detect"
     }
   },
-  "plugins": [
-    "react",
-    "react-hooks",
-    "prettier"
-  ],
+  "plugins": [],
   "rules": {
     "react/react-in-jsx-scope": 0,
     "react/prefer-stateless-function": 0,
