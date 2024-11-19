@@ -8,7 +8,7 @@ export default {
   tags: ['autodocs'],
 } satisfies Meta<typeof LinkBtn>;
 
-const Template: StoryFn = (args) => <LinkBtn {...args} />;
+const Template: StoryFn<typeof LinkBtn> = (args) => <LinkBtn {...args} />;
 
 export const TodayFocus = Template.bind({});
 
