@@ -25,6 +25,8 @@ export function GNB() {
         <CommonBtn
           widthType='dynamic'
           heightType='dynamic'
+          aria-label='새로운 스터디 그룹 만들기'
+          data-testid='create-study-button'
         >
           스터디 만들기
         </CommonBtn>

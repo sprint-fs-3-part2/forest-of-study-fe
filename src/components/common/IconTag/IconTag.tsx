@@ -46,25 +46,43 @@ export function IconTag({
   icon,
   className,
 }: IconTagProps) {
+  const getStyleClasses = () => {
+    const baseClasses = [
+      'rounded-[50px]',
+      'flex justify-between items-center',
+      'w-fit gap-[5px]',
+      'font-normal',
+      className,
+      FONT_SIZE[parentComponent],
+      PADDING[parentComponent][variant],
+    ];
+    if (variant === 'point') {
+      baseClasses.push(BORDER[variant]);
+    }
+
+    if (variant === 'reaction') {
+      baseClasses.push(BORDER[variant][fillColor]);
+    }
+
+    if (fillColor === 'white') {
+      baseClasses.push(OPACITY[fillColor]);
+    }
+
+    if (fillColor === 'black') {
+      if (parentComponent === 'card' && backgroundType) {
+        baseClasses.push(OPACITY[fillColor][parentComponent][backgroundType]);
+      } else if (parentComponent === 'page') {
+        baseClasses.push(OPACITY[fillColor][parentComponent]);
+      }
+    }
+    return baseClasses;
+  };
+
   return (
     <div
-      className={cn(
-        'rounded-[50px]',
-        'flex justify-between items-center',
-        'w-fit gap-[5px]',
-        'font-normal',
-        className,
-        FONT_SIZE[parentComponent],
-        PADDING[parentComponent][variant],
-        variant === 'point' && BORDER[variant],
-        variant === 'reaction' && BORDER[variant][fillColor],
-        fillColor === 'white' && OPACITY[fillColor],
-        backgroundType && fillColor === 'black' && parentComponent === 'card'
-          ? OPACITY[fillColor][parentComponent][backgroundType]
-          : fillColor === 'black' &&
-              parentComponent === 'page' &&
-              OPACITY[fillColor][parentComponent],
-      )}
+      className={cn(getStyleClasses())}
+      role='status'
+      aria-label={`${text} 태그`}
     >
       {typeof icon === 'string' ? (
         <p className={FONT_SIZE[parentComponent]}>{icon}</p>
@@ -72,7 +90,7 @@ export function IconTag({
         <Image
           width={parentComponent === 'page' ? 16 : 12}
           src={icon}
-          alt='포인트 아이콘'
+          alt='아이콘'
         />
       )}
       <p className={FONT_SIZE[parentComponent]}>{text}</p>

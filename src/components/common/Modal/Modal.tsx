@@ -19,6 +19,8 @@ export function Modal({ isOpen, children }: ModalProps) {
   return createPortal(
     <div className='absolute inset-0 bg-black-50 z-10'>
       <div
+        role='dialog'
+        aria-modal='true'
         className={cn(
           'absolute top-1/2 left-1/2',
           '-translate-x-1/2 -translate-y-1/2',

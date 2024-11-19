@@ -37,6 +37,7 @@ export function ActionBtn({
 }: ActionBtnProps) {
   return (
     <button
+      type='button'
       className={cn(
         'w-full',
         'pl-[78px]',
@@ -48,13 +49,14 @@ export function ActionBtn({
         ROUNDED[variant],
         PADDING[variant],
       )}
+      aria-label={typeof children === 'string' ? children : undefined}
       {...rest}
     >
       <div className={cn('flex flex-row justify-between items-center w-full')}>
         <Image
           className={cn('w-[24px] md:w-[44px] xl:w-[44px]')}
           src={icon}
-          alt='아이콘'
+          alt={`${typeof children === 'string' ? children : '액션'} 버튼 아이콘`}
         />
         {typeof children === 'string' && (
           <p
