@@ -1,6 +1,7 @@
+/* eslint-disable no-undef */
 'use client';
 
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 import rightArrowIcon from '@/public/icons/ic_arrow_right.svg';
 import { useState } from 'react';
@@ -36,7 +37,7 @@ const Button = ({ children }: ButtonProps) => {
       {children}
       {rightArrowIcon && (
         <Image
-          src={rightArrowIcon}
+          src={rightArrowIcon as StaticImageData}
           width={24}
           height={24}
           alt='페이지 이동 아이콘'
@@ -58,7 +59,7 @@ export const Point = () => {
 
 export const Timer = () => {
   // TODO: 현우님과 상의 필요
-  const [time, setTime] = useState('25:00');
+  const [time] = useState('25:00');
 
   return (
     <div className='border border-gray-light rounded-[20px] flex flex-col justify-around items-center h-[546px]'>
