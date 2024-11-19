@@ -38,7 +38,6 @@ const StopButtonProps: ActionBtnProps = {
   children: 'Stop!',
   icon: stopIcon,
   disabled: false,
-  onClick: () => console.log('hi'),
 };
 
 StopButton.args = {
