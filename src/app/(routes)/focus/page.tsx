@@ -1,4 +1,4 @@
-import * as FocusToday from './FocusToday';
+import * as FocusToday from './index';
 
 const FocusTodayPage = () => {
   const title = '연우의 개발공장';
@@ -8,7 +8,7 @@ const FocusTodayPage = () => {
       <main className='bg-white max-w-[1248px] max-h-[774px] mx-auto rounded-[20px] p-10'>
         <FocusToday.Header title={title} />
         <FocusToday.Point />
-        <FocusToday.Timer / >
+        <FocusToday.Timer />
       </main>
     </div>
   );
