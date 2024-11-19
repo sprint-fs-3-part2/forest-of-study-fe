@@ -1,4 +1,3 @@
-import React from 'react';
 import Image from 'next/image';
 import { ActionBtnProps } from './ActionBtn.types';
 import cn from '@/lib/cn';
