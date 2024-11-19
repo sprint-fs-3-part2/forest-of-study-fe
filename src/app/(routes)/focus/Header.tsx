@@ -10,8 +10,8 @@ type HeaderProps = {
 
 const Header = ({ title }: HeaderProps) => {
   return (
-    <div className='flex flex-row justify-between items-center mb-4'>
-      <h1 className='text-[32px] font-bold'>{title}</h1>
+    <div className='flex flex-row justify-between items-center mb-4 flex-wrap gap-4'>
+      <h1 className='text-[32px] font-bold max-sm:text-2xl'>{title}</h1>
       <div className='flex gap-4'>
         <Link href={'/habit'}>
           <Button>오늘의 습관</Button>

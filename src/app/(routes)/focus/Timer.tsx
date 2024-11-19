@@ -2,8 +2,12 @@
 
 import useTimer from '@/hooks/useTimer';
 
-const Timer = () => {
-  const initTime = 25 * 60; // 25분
+type TimerProps = {
+  initialTime?: number;
+};
+
+const Timer = ({ initialTime = 25 }: TimerProps) => {
+  const initTime = initialTime * 60; // 25분
   const {
     secondsLeft,
     isPaused,
@@ -15,23 +19,23 @@ const Timer = () => {
   } = useTimer(initTime);
 
   return (
-    <div className='border border-gray-light rounded-[20px] flex flex-col justify-around items-center h-[546px]'>
+    <div className='border border-gray-light rounded-[20px] flex flex-col justify-around items-center h-[546px] max-md:h-[510px] max-sm:h-[358px]'>
       {/* 타이머 제목 */}
       <h2 className='font-extrabold text-2xl'>오늘의 집중</h2>
 
       {/* 타이머 */}
       {secondsLeft >= 10 && (
-        <span className='font-extrabold text-[150px]'>
+        <span className='font-extrabold xl:text-[150px] md:text-[120px] sm:text-[80px] max-sm:text-[80px]'>
           {formattedMinutes + ':' + formattedSeconds}
         </span>
       )}
       {secondsLeft < 10 && secondsLeft >= 0 && (
-        <span className='font-extrabold text-[150px] text-red'>
+        <span className='font-extrabold text-red xl:text-[150px] md:text-[120px] sm:text-[80px]'>
           {formattedMinutes + ':' + formattedSeconds}
         </span>
       )}
       {secondsLeft < 0 && (
-        <span className='font-extrabold text-[150px] text-gray'>
+        <span className='font-extrabold text-gray xl:text-[150px] md:text-[120px] sm:text-[80px]'>
           {formattedMinutes + ':' + formattedSeconds}
         </span>
       )}
