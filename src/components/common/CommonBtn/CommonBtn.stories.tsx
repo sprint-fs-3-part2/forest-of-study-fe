@@ -4,7 +4,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { CommonBtnProps } from './CommonBtn.types';
 
 export default {
-  title: 'CommonBtn',
+  title: 'common/CommonBtn',
   component: CommonBtn,
   tags: ['autodocs'],
   decorators: [

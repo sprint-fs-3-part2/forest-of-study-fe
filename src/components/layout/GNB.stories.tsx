@@ -2,7 +2,7 @@ import { Meta, StoryFn } from '@storybook/react';
 import { GNB } from './GNB';
 
 export default {
-  title: 'GNB',
+  title: 'common/GNB',
   component: GNB,
   tags: ['autodocs'],
   decorators: [
