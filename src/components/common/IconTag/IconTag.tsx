@@ -24,6 +24,7 @@ const OPACITY = {
     card: {
       color: 'text-white bg-black-50',
       image: 'text-white bg-black-40',
+      default: 'text-white bg-black-50',
     },
     page: 'text-white bg-black-50',
   },
@@ -46,6 +47,12 @@ export function IconTag({
   icon,
   className,
 }: IconTagProps) {
+  if (parentComponent === 'card' && fillColor === 'black' && !backgroundType) {
+    throw new Error(
+      'backgroundType은 parentComponent가 card이고 fillColor가 black일 때 필수입니다.',
+    );
+  }
+
   const getStyleClasses = () => {
     const baseClasses = [
       'rounded-[50px]',
@@ -91,7 +98,7 @@ export function IconTag({
         <Image
           width={parentComponent === 'page' ? 16 : 12}
           src={icon}
-          alt='아이콘'
+          alt={`${text}관련 아이콘`}
         />
       )}
       <p className={FONT_SIZE[parentComponent]}>{text}</p>

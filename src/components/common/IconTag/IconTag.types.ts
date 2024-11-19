@@ -4,7 +4,7 @@ export interface IconTagProps {
   variant: 'point' | 'reaction';
   parentComponent: 'card' | 'page';
   fillColor: 'white' | 'black';
-  backgroundType?: 'color' | 'image';
+  backgroundType?: 'color' | 'image'; // parentComponent가 card일 때만 필요
   text: string;
   icon:
     | StaticImageData
