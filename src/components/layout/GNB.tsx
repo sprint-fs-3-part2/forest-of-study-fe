@@ -5,6 +5,7 @@ import Logo from '@/public/img_logo.svg';
 import { CommonBtn } from '@/components/common/CommonBtn';
 import cn from '@/lib/cn';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 export function GNB() {
   const pathname = usePathname();
@@ -18,24 +19,28 @@ export function GNB() {
         'py-[31px] md:py-[21px] xl:py-[21px]',
       )}
     >
-      <Image
-        className={cn('w-[106px] md:w-[181px] xl:w-[181px]')}
-        src={Logo}
-        width={181}
-        height={60}
-        alt='로고 이미지'
-        priority
-        quality={90}
-      />
+      <Link href='/'>
+        <Image
+          className={cn('w-[106px] md:w-[181px] xl:w-[181px]')}
+          src={Logo}
+          width={181}
+          height={60}
+          alt='로고 이미지'
+          priority
+          quality={90}
+        />
+      </Link>
       {pathname === '/' ? (
-        <CommonBtn
-          widthType='dynamic'
-          heightType='dynamic'
-          aria-label='새로운 스터디 그룹 만들기'
-          data-testid='create-study-button'
-        >
-          스터디 만들기
-        </CommonBtn>
+        <Link href='/study/create'>
+          <CommonBtn
+            widthType='dynamic'
+            heightType='dynamic'
+            aria-label='새로운 스터디 그룹 만들기'
+            data-testid='create-study-button'
+          >
+            스터디 만들기
+          </CommonBtn>
+        </Link>
       ) : null}
     </nav>
   );
