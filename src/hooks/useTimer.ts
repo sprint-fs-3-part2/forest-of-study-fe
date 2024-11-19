@@ -1,12 +1,22 @@
 import { formatTimeForTimer } from '@/utils/formatTimeForTimer';
 import { useEffect, useRef, useState } from 'react';
 
-const useTimer = (initialTime: number) => {
-  const [isPaused, setIsPaused] = useState(true); // 일시정지 상태
-  const [secondsLeft, setSecondsLeft] = useState(initialTime); // 남은 시간
+type TimerReturnType = {
+  secondsLeft: number;
+  isPaused: boolean;
+  formattedMinutes: string;
+  formattedSeconds: string;
+  start: () => void;
+  pause: () => void;
+  reset: () => void;
+};
 
-  const secondsLeftRef = useRef(secondsLeft);
-  const isPausedRef = useRef(isPaused);
+const useTimer = (initialTime: number): TimerReturnType => {
+  const [isPaused, setIsPaused] = useState<boolean>(true); // 일시정지 상태
+  const [secondsLeft, setSecondsLeft] = useState<number>(initialTime); // 남은 시간
+
+  const secondsLeftRef = useRef<number>(secondsLeft);
+  const isPausedRef = useRef<boolean>(isPaused);
 
   // 1초마다 실행되는 함수
   const tick = () => {
