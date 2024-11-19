@@ -52,7 +52,6 @@ export function IconTag({
       'flex justify-between items-center',
       'w-fit gap-[5px]',
       'font-normal',
-      className,
       FONT_SIZE[parentComponent],
       PADDING[parentComponent][variant],
     ];
@@ -75,6 +74,8 @@ export function IconTag({
         baseClasses.push(OPACITY[fillColor][parentComponent]);
       }
     }
+    className && baseClasses.push(className);
+
     return baseClasses;
   };
 

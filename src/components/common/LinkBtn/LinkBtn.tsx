@@ -1,22 +1,28 @@
 import Image from 'next/image';
 import ArrowRightIcon from '@/public/icons/ic_arrow_right.png';
-import { ComponentPropsWithoutRef } from 'react';
+import { LinkBtnProps } from './LinkBtn.types';
+import cn from '@/lib/cn';
 
 export function LinkBtn({
   children,
+  className,
+  iconSize = 24,
   ...props
-}: ComponentPropsWithoutRef<'button'>) {
+}: LinkBtnProps) {
   return (
     <button
-      className='flex justify-center items-center py-[12px] pl-[24px] pr-[16px] border border-gray-light rounded-[15px] text-gray gap-[4px]'
+      className={cn(
+        'flex justify-center items-center py-[12px] pl-[24px] pr-[16px] border border-gray-light rounded-[15px] text-gray gap-[4px]',
+        className,
+      )}
       {...props}
     >
       <p>{children}</p>
       <Image
         src={ArrowRightIcon}
         alt='오른쪽 화살표 이미지'
-        width={24}
-        height={24}
+        width={iconSize}
+        height={iconSize}
       ></Image>
     </button>
   );
