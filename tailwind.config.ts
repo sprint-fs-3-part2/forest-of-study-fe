@@ -22,9 +22,6 @@ const config: Config = {
           light: 'var(--gray-light)',
           lighter: 'var(--gray-lighter)',
         },
-        bg: {
-          primary: 'var(--bg-primary)',
-        },
         brand: 'var(--brand)',
         green: {
           DEFAULT: 'var(--green)',
