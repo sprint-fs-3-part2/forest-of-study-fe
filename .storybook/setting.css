@@ -3,9 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --background: #F6F4EF;
+  --background: #ffffff;
   --foreground: #171717;
 
+  /* color name from figma */
+  /* Base colors */
+  --background: #ffffff;
+  --foreground: #171717;
+
+  /* Black & Gray colors */
   --black: #414141;
   --black-50: rgba(0, 0, 0, 0.5);
   --black-40: rgba(0, 0, 0, 0.4);
@@ -40,30 +46,19 @@
   /* Pink colors */
   --pink: #fde0e9;
   --pink-text: #bc3c6a;
+
+  /* fonts */
+  --font-pretendard-variable: 'Pretendard';
+  --font-jejudoldam: 'JejuDoldam';
 }
 
-/* 다크모드 지원시
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: var(--font-pretendard-variable);
+@font-face {
+  font-family: 'Pretendard';
+  src: url('../src/app/fonts/PretendardVariable.woff2') format('woff2');
+  font-weight: 100 900;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
-
-@layer base {
-  html {
-    font-family: var(--font-pretendard-variable);
-  }
+@font-face {
+  font-family: 'JejuDoldam';
+  src: url('../src/app/fonts/EF_jejudoldam.ttf') format('truetype');
 }

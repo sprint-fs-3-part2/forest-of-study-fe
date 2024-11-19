@@ -1,4 +1,7 @@
-import Image from 'next/image';
+/* eslint-disable no-undef */
+'use client';
+
+import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 
 /* 아이콘 */
@@ -35,7 +38,7 @@ const Button = ({ children }: ButtonProps) => {
       {children}
       {rightArrowIcon && (
         <Image
-          src={rightArrowIcon}
+          src={rightArrowIcon as StaticImageData}
           width={24}
           height={24}
           alt='페이지 이동 아이콘'

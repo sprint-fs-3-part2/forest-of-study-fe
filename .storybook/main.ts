@@ -7,6 +7,7 @@ const config: StorybookConfig = {
     '@storybook/addon-essentials',
     '@chromatic-com/storybook',
     '@storybook/addon-interactions',
+    './addon/register',
     {
       name: '@storybook/addon-styling',
       options: {
@@ -18,5 +19,7 @@ const config: StorybookConfig = {
     name: '@storybook/nextjs',
     options: {},
   },
+  staticDirs: ['../public'],
 };
+
 export default config;
