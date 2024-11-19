@@ -1,6 +1,13 @@
 'use client';
 
+import { ActionBtn } from '@/components/common/ActionBtn';
 import useTimer from '@/hooks/useTimer';
+
+/* 아이콘 */
+import playIcon from '@/public/icons/play_icon.png'; // 시작
+import stopIcon from '@/public/icons/stop_icon.png'; // 정지
+import pauseIcon from '@/public/icons/pause_icon.png'; // 일시정지
+import restartIcon from '@/public/icons/restart_icon.png'; // 재시작
 
 type TimerProps = {
   initialTime?: number;
@@ -43,33 +50,48 @@ const Timer = ({ initialTime = 25 }: TimerProps) => {
       {/* 타이머 관련 버튼 */}
       <div className='flex justify-between gap-6'>
         {secondsLeft === initTime && (
-          <button onClick={start}> start! 가능 </button>
+          <ActionBtn
+            variant={'ellipse'}
+            icon={playIcon}
+            disabled={false}
+            onClick={start}
+          >
+            Start!
+          </ActionBtn>
         )}
         {secondsLeft !== initTime && secondsLeft >= 0 && (
           <>
-            <button
+            <ActionBtn
+              variant={'circle'}
+              icon={pauseIcon}
               disabled={isPaused}
               onClick={isPaused ? undefined : pause}
-            >
-              {isPaused ? 'stop불가능' : 'stop 가능'}
-            </button>
-
-            <button
+            />
+            <ActionBtn
+              variant={'ellipse'}
+              icon={playIcon}
               disabled={!isPaused}
               onClick={isPaused ? start : undefined}
             >
-              {isPaused ? 'start! 가능' : 'start! 불가능'}
-            </button>
-            <button onClick={reset}> reset</button>
+              Start!
+            </ActionBtn>
+            <ActionBtn
+              variant={'circle'}
+              icon={restartIcon}
+              disabled={!isPaused}
+              onClick={reset}
+            />
           </>
         )}
         {secondsLeft < 0 && (
-          <button
+          <ActionBtn
+            variant={'ellipse'}
+            icon={stopIcon}
+            disabled={false}
             onClick={reset}
-            className='text-gray'
           >
-            stop!
-          </button>
+            Stop!
+          </ActionBtn>
         )}
       </div>
     </div>
