@@ -5,7 +5,7 @@ import './setting.css';
 const preview: Preview = {
   parameters: {
     controls: {
-      expended: true,
+      expanded: true,
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/i,
