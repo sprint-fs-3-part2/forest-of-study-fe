@@ -5,6 +5,7 @@ import { codeExample } from './codeExample';
 export default {
   title: 'common/StudyNav',
   component: StudyNav,
+  tags: ['autodocs'],
   decorators: [
     (Story) => (
       <div className='w-[1000px]'>

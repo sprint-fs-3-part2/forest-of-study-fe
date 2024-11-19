@@ -12,7 +12,7 @@ import { StudyNav } from '@/components/common/StudyNav/StudyNav';
 `;
 
 export const codeExample = (props: StudyNavProps) => `
-# Modal.tsx
+# StudyNav.tsx
 \`\`\`tsx
 ${CodeSnippet(props)}
 \`\`\`
