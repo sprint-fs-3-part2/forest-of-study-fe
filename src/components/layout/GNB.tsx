@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import Logo from '@/public/img_logo.svg';
+import Logo from '@/public/image/img_logo.svg';
 import { CommonBtn } from '@/components/common/CommonBtn';
 import cn from '@/lib/cn';
 import { usePathname } from 'next/navigation';
