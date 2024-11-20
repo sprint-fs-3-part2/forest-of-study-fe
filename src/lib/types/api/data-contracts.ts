@@ -9,104 +9,9 @@
  * ---------------------------------------------------------------
  */
 
-export interface CreateStudyDto {
-  /**
-   * 스터디 이름
-   * @example "UX 스터디"
-   */
-  name: string;
-  /**
-   * 스터디 개설자의 닉네임
-   * @example "K.K."
-   */
-  nickname: string;
-  /**
-   * 스터디 소개
-   * @example "나비보벳따우"
-   */
-  intro: string;
-  /**
-   * 스터디 배경 이미지
-   * @example "green"
-   */
-  background: string;
-  /**
-   * 스터디 비밀번호
-   * @minLength 8
-   * @maxLength 64
-   * @example "1q2w3e4r"
-   */
-  password: string;
-}
+export type CreateStudyDto = object;
 
-export interface CreateStudyResponseDto {
-  /**
-   * 스터디 ID (UUIDv4)
-   * @example "351e4bd9-77f4-4492-b2b3-f60b8a30d4d3"
-   */
-  id: string;
-}
-
-export interface SearchKeywordResponseDto {
-  /**
-   * 스터디 이름
-   * @example "UX 스터디"
-   */
-  name: string;
-  /**
-   * 스터디 개설자의 닉네임
-   * @example "K.K."
-   */
-  nickname: string;
-  /**
-   * 스터디 소개
-   * @example "나비보벳따우"
-   */
-  intro: string;
-  /**
-   * 스터디 배경 이미지
-   * @example "green"
-   */
-  background: string;
-}
-
-export interface UpdateStudyDto {
-  /**
-   * 스터디 이름
-   * @example "UX 스터디"
-   */
-  name?: string;
-  /**
-   * 스터디 개설자의 닉네임
-   * @example "K.K."
-   */
-  nickname?: string;
-  /**
-   * 스터디 소개
-   * @example "나비보벳따우"
-   */
-  intro?: string;
-  /**
-   * 스터디 배경 이미지
-   * @example "green"
-   */
-  background?: string;
-  /**
-   * 스터디 비밀번호
-   * @minLength 8
-   * @maxLength 64
-   * @example "1q2w3e4r"
-   */
-  password?: string;
-}
-
-export interface UpdateStudyResponseDto {
-  /**
-   * 스터디 ID (UUIDv4)
-   * @example "351e4bd9-77f4-4492-b2b3-f60b8a30d4d3"
-   */
-  id?: string;
-}
+export type UpdateStudyDto = object;
 
 export type CreateHabitDto = object;
 
@@ -122,19 +27,15 @@ export type UpdateReactionDto = object;
 
 export type AppControllerGetHelloData = any;
 
-export type StudiesControllerCreateData = CreateStudyResponseDto;
+export type StudiesControllerCreateData = any;
 
-export type StudiesControllerGetStudiesData = any;
+export type StudiesControllerFindAllData = any;
 
-export type StudiesControllerGetRecentStudiesData = any;
+export type StudiesControllerFindOneData = any;
 
-export type StudiesControllerSearchStudiesData = SearchKeywordResponseDto;
+export type StudiesControllerUpdateData = any;
 
-export type StudiesControllerGetStudyByIdData = any;
-
-export type StudiesControllerUpdateStudyData = UpdateStudyResponseDto;
-
-export type StudiesControllerDeleteStudyData = any;
+export type StudiesControllerRemoveData = any;
 
 export type HabitsControllerCreateData = any;
 

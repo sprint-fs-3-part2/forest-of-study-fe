@@ -31,10 +31,8 @@ export default function RootLayout({
       <body
         className={`${pretendard.variable} ${jejudoldam.variable} antialiased min-h-screen min-h-dvh`}
       >
-        <header>
-          <GNB />
-        </header>
-        <main>{children}</main>
+        <GNB />
+        {children}
       </body>
     </html>
   );

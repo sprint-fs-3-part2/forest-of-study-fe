@@ -38,3 +38,7 @@ next-env.d.ts
 *storybook.log
 
 .vscode
+.idea
+*.iml
+*.iws
+.idea_modules/
