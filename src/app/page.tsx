@@ -1,5 +1,5 @@
-import RecentStudyBoard from './_components/RecentStudyBoard';
-import StudyExplorerBoard from './_components/StudyExplorerBoard';
+import RecentStudyBoard from './(home)/_components/RecentStudyBoard';
+import StudyExplorerBoard from './(home)/_components/StudyExplorerBoard';
 
 export default function Home() {
   return (

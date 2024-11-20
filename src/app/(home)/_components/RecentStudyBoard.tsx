@@ -2,7 +2,13 @@ const CONTAINER_STYLES = {
   base: 'container base-container min-h-[382px] max-w-[1200px] mx-auto',
 };
 
-export default function RecentStudyBoard() {
+async function getRecentStudies() {
+  if (localStorage.getItem('recentStudies')) {
+  }
+  return [];
+}
+
+export default async function RecentStudyBoard() {
   return (
     <section
       className={CONTAINER_STYLES.base}
