@@ -8,10 +8,11 @@ type SearchInputProps = {
 };
 
 export default function SearchInput({
+  name,
   value,
   onChange,
   placeholder,
-}: SearchInputProps) {
+}: Readonly<SearchInputProps>) {
   return (
     <label className='relative flex w-[335px]'>
       <span className='sr-only'>Search</span>
@@ -30,7 +31,7 @@ export default function SearchInput({
         value={value}
         onChange={onChange}
         type='text'
-        name='search'
+        name={name}
       />
     </label>
   );

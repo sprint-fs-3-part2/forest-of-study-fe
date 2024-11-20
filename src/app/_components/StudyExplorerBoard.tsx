@@ -3,7 +3,15 @@ import Dropdown, { type DropdownOption } from './Dropdown';
 import SearchInput from './SearchInput';
 import { useState } from 'react';
 
-const SORT_OPTIONS: DropdownOption[] = [
+type SortOrder = 'asc' | 'desc';
+type SortField = 'createdAt' | 'points';
+
+interface StudySortOption extends DropdownOption {
+  orderBy: SortField;
+  order: SortOrder;
+}
+
+const SORT_OPTIONS: StudySortOption[] = [
   { label: '최신 순', orderBy: 'createdAt', order: 'desc' },
   { label: '오래된 순', orderBy: 'createdAt', order: 'asc' },
   { label: '많은 포인트 순', orderBy: 'points', order: 'desc' },

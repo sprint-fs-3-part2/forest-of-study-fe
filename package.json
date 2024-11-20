@@ -10,7 +10,7 @@
     "tailwind": "npx tailwindcss -i ./src/input.css -o ./src/output.css --watch",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "codegen": "npx swagger-typescript-api -p http://localhost:8000/api-json -r -o ./src/lib/types/api --modular -d --extract-request-body --extract-response-body --extract-response-error --axios"
+    "codegen": "npx swagger-typescript-api -p http://localhost:8000/api-json -r -o ./src/lib/types/api --modular -d --extract-request-body --extract-response-body --extract-response-error"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -38,7 +38,6 @@
     "@types/react-dom": "^18",
     "@typescript-eslint/eslint-plugin": "^7.1.1",
     "@typescript-eslint/parser": "^7.1.1",
-    "axios": "^1.7.7",
     "chromatic": "^11.18.1",
     "copy-to-clipboard": "^3.3.3",
     "eslint": "8.57.1",
