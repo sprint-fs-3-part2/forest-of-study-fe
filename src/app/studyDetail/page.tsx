@@ -20,7 +20,7 @@ export default function StudyDetailPage() {
   const [habits, setHabits] = useState<HabitRecord[]>([
     {
       id: 1,
-      text: '습관 입력',
+      text: '입력',
       days: Array(7).fill(false),
     },
   ]);
