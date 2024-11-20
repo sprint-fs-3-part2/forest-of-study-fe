@@ -34,7 +34,7 @@ export const StudyNav = ({ nickname, studyName }: StudyNavProps) => {
   };
 
   return (
-    <div className='flex justify-between items-center flex-wrap'>
+    <div className='flex justify-between items-center flex-wrap gap-y-4 mb-4'>
       <span
         className={cn('font-extrabold', FONT_SIZE, 'text-black')}
       >{`${nickname}의 ${studyName}`}</span>
