@@ -39,3 +39,6 @@ next-env.d.ts
 
 .vscode
 .idea
+*.iml
+*.iws
+.idea_modules/
