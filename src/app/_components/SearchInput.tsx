@@ -7,6 +7,11 @@ type SearchInputProps = {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
+const SEARCH_INPUT_CLASSES = {
+  icon: 'absolute inset-y-0 left-5 flex items-center',
+  input: 'outlined pl-12 leading-none max-h-10 w-full',
+};
+
 export default function SearchInput({
   name,
   value,
@@ -16,7 +21,7 @@ export default function SearchInput({
   return (
     <label className='relative flex w-[335px]'>
       <span className='sr-only'>Search</span>
-      <span className='absolute inset-y-0 left-5 flex items-center'>
+      <span className={SEARCH_INPUT_CLASSES.icon}>
         <Image
           src='/icons/ic_search.png'
           width={18}
@@ -26,12 +31,13 @@ export default function SearchInput({
       </span>
 
       <input
-        className='outlined pl-12 leading-none max-h-10 w-full'
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        type='text'
+        className={SEARCH_INPUT_CLASSES.input}
         name={name}
+        onChange={onChange}
+        placeholder={placeholder}
+        role='searchbox'
+        type='text'
+        value={value}
       />
     </label>
   );
