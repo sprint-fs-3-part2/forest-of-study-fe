@@ -42,3 +42,4 @@ next-env.d.ts
 *.iml
 *.iws
 .idea_modules/
+.tool-versions
