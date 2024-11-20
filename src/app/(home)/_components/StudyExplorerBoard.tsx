@@ -42,22 +42,33 @@ export default function StudyExplorerBoard() {
     SORT_OPTIONS[0],
   );
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+
+export default function StudyExplorerBoard() {
+  const [studies, setStudies] = useState<Study[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  
   useEffect(() => {
     async function fetchStudies() {
+      setIsLoading(true);
+      setError(null);
       try {
-        const res = await fetch('http://localhost:8000/studies');
+        const res = await fetch(`${API_BASE_URL}/studies`);
         if (!res.ok) {
           throw new Error('Failed to fetch studies');
         }
         const studies = await res.json();
         setStudies(studies);
       } catch (error) {
+        setError('스터디 목록을 불러오는데 실패했습니다');
         console.error(error);
+      } finally {
+        setIsLoading(false);
       }
     }
     fetchStudies();
-  }, [studies, searchKeyword, selectedSortOpt]);
-
+  }, [searchKeyword, selectedSortOpt]);
   return (
     <section className={STUDY_EXPLORER_BOARD_CLASSES.section}>
       <h1 className='heading-2'>스터디 둘러보기</h1>
