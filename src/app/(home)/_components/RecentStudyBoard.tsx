@@ -1,17 +1,12 @@
-const CONTAINER_STYLES = {
-  base: 'container base-container min-h-[382px] max-w-[1200px] mx-auto',
+const RECENT_STUDY_BOARD_CLASSES = {
+  section:
+    'container base-container grid grid-rows-[auto_1fr] max-w-[1200px] min-h-[382px] mx-auto gap-6',
 };
-
-async function getRecentStudies() {
-  if (localStorage.getItem('recentStudies')) {
-  }
-  return [];
-}
 
 export default async function RecentStudyBoard() {
   return (
     <section
-      className={CONTAINER_STYLES.base}
+      className={RECENT_STUDY_BOARD_CLASSES.section}
       aria-labelledby='recent-studies-heading'
     >
       <h1
