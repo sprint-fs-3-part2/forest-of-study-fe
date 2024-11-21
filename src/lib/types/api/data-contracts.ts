@@ -42,7 +42,7 @@ export interface CreateStudyDto {
 export interface CreateStudyResponseDto {
   /**
    * 스터디 ID (UUIDv4)
-   * @example "64aa3ca4-65ed-460d-b100-7fc93829a07d"
+   * @example "98e990ff-8b19-40ec-827b-8f6d4fb69aff"
    */
   id: string;
 }
@@ -79,6 +79,36 @@ export interface RecentStudiesResponseDto {
    * @example "green"
    */
   background: string;
+}
+
+export interface GetStudyOptDto {
+  /**
+   * 스터디 이름
+   * @example "UX 스터디"
+   */
+  name: string;
+  /**
+   * 스터디 개설자의 닉네임
+   * @example "K.K."
+   */
+  nickname: string;
+  /**
+   * 스터디 소개
+   * @example "나비보벳따우"
+   */
+  intro: string;
+  /**
+   * 스터디 배경 이미지
+   * @example "green"
+   */
+  background: string;
+  /**
+   * 스터디 비밀번호
+   * @minLength 8
+   * @maxLength 64
+   * @example "1q2w3e4r"
+   */
+  password: string;
 }
 
 export interface SearchKeywordResponseDto {
@@ -137,7 +167,7 @@ export interface UpdateStudyDto {
 export interface UpdateStudyResponseDto {
   /**
    * 스터디 ID (UUIDv4)
-   * @example "64aa3ca4-65ed-460d-b100-7fc93829a07d"
+   * @example "98e990ff-8b19-40ec-827b-8f6d4fb69aff"
    */
   id?: string;
 }
@@ -158,7 +188,7 @@ export type AppControllerGetHelloData = any;
 
 export type StudiesControllerCreateStudyData = CreateStudyResponseDto;
 
-export type StudiesControllerGetStudiesData = any;
+export type StudiesControllerGetStudiesData = GetStudyOptDto;
 
 export type StudiesControllerGetRecentStudiesData = RecentStudiesResponseDto;
 

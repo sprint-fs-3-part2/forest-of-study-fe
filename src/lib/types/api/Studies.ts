@@ -90,6 +90,7 @@ export class Studies<
       path: `/studies`,
       method: 'GET',
       query: query,
+      format: 'json',
       ...params,
     });
   /**
