@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang='ko'>
       <body
-        className={`${pretendard.variable} ${jejudoldam.variable} antialiased`}
+        className={`${pretendard.variable} ${jejudoldam.variable} antialiased min-h-screen min-h-dvh`}
       >
         <GNB />
         {children}

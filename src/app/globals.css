@@ -42,7 +42,7 @@
   --pink-text: #bc3c6a;
 }
 
-/* 다크모드 지원시
+/* 다크모드 적용하게 되면 사용
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -65,5 +65,20 @@ body {
 @layer base {
   html {
     font-family: var(--font-pretendard-variable);
+  }
+}
+
+@layer components {
+  .heading-2 {
+    @apply font-extrabold text-2xl text-black
+  }
+  .caption-base {
+    @apply font-medium text-xl text-gray
+  }
+  .base-container {
+    @apply bg-white rounded-[20px] p-10
+  }
+  .outlined {
+    @apply border border-gray-light rounded-[15px] text-base font-normal text-black placeholder:text-gray px-5 py-3
   }
 }
