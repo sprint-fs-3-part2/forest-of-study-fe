@@ -1,9 +1,9 @@
-import RecentStudyBoard from './(home)/_components/RecentStudyBoard';
-import StudyExplorerBoard from './(home)/_components/StudyExplorerBoard';
+import RecentStudyBoard from '@/components/study/RecentStudyBoard';
+import StudyExplorerBoard from '@/components/study/StudyExplorerBoard';
 
 export default function Home() {
   return (
-    <div className='grid gap-6 pb-44'>
+    <div className='gap-6 grid pb-44'>
       <RecentStudyBoard />
       <StudyExplorerBoard />
     </div>
