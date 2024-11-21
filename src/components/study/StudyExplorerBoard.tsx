@@ -28,7 +28,7 @@ type Study = {
 };
 
 export default function StudyExplorerBoard() {
-  const [studies, setStudies] = useState<Study[]>([]);
+  const [studies, _setStudies] = useState<Study[]>([]);
   const [searchKeyword, setSearchKeyword] = useState<string>('');
   const [selectedSortOpt, setSelectedSortOpt] = useState<DropdownOption>(
     SORT_OPTIONS[0],
