@@ -1,5 +1,5 @@
 import { axiosInstance } from '@/lib/axios/axiosInstance';
-import { GetStudyOptDto } from '@/lib/types/api/data-contracts';
+// import { GetStudyOptDto } from '@/lib/types/api/data-contracts';
 
 export const apiRequest = async <T>(request: () => Promise<T>): Promise<T> => {
   try {
@@ -10,9 +10,16 @@ export const apiRequest = async <T>(request: () => Promise<T>): Promise<T> => {
   }
 };
 
-export const getStudies = async (): Promise<GetStudyOptDto> => {
+// export const getStudies = async (): Promise<GetStudyOptDto> => {
+//   return apiRequest(async () => {
+//     const response = await axiosInstance.get<GetStudyOptDto>('/studies');
+//     return response.data;
+//   });
+// };
+
+export const getStudies = async () => {
   return apiRequest(async () => {
-    const response = await axiosInstance.get<GetStudyOptDto>('/studies');
+    const response = await axiosInstance.get('/studies');
     return response.data;
   });
 };

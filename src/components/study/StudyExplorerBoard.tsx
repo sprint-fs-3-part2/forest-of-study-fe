@@ -15,20 +15,8 @@ const STUDY_EXPLORER_BOARD_CLASSES = {
   section:
     'container base-container grid grid-rows-[auto_1fr] max-w-[1200px] min-h-[822px] mx-auto gap-6',
 };
-
-type Study = {
-  id: string;
-  name: string;
-  nickname: string;
-  intro: string;
-  background: 'BLUE' | 'GREEN' | 'YELLOW' | 'RED';
-  password: string;
-  createdAt: Date;
-  updatedAt: Date;
-};
-
 export default function StudyExplorerBoard() {
-  const [studies, setStudies] = useState<Study[]>([]);
+  const [studies, setStudies] = useState<unknown[]>([]);
   const [searchKeyword, setSearchKeyword] = useState<string>('');
   const [selectedSortOpt, setSelectedSortOpt] = useState<DropdownOption>(
     SORT_OPTIONS[0],
@@ -63,7 +51,7 @@ export default function StudyExplorerBoard() {
         </div>
         <div className='container grid place-items-center h-full'>
           {studies.length > 0 &&
-            studies.map((study) => <div key={study.id}>{study.name}</div>)}
+            studies.map((study) => <div key={study?.id}>{study?.name}</div>)}
           {studies?.length === 0 && (
             <p className='caption-base'>아직 둘러 볼 스터디가 없어요</p>
           )}
