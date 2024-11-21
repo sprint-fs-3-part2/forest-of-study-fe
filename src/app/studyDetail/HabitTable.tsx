@@ -11,31 +11,21 @@ interface HabitTableProps {
 
 const TOTAL_ROWS = 6;
 
-const HabitTable = ({ habits, onHabitChange } :
-  HabitTableProps) => {
-    const days = ['월', '화', '수', '목', '금', '토', '일'];
+const HabitTable = ({ habits, onHabitChange }: HabitTableProps) => {
+  const days = ["월", "화", "수", "목", "금", "토", "일"];
 
-    // 현재 수정 중인 습관의 ID
-    const [editingHabitId, setEditingHabitId] = useState<number | null>(null);
+  // 현재 수정 중인 습관의 ID
+  const [editingHabitId, setEditingHabitId] = useState<number | null>(null);
+  const [editingText, setEditingText] = useState<string>("");
 
-    const [editingText, setEditingText] = useState<string>("");
-
-    // 발바닥 색깔
-    const getFootColor = (rowIndex: number, isActive: boolean) => {
-      if (!isActive) {
-      return {
-        filter: `grayscale(100%) opacity(0.5)`,
-      };
-      }
-
-
-    // 행 번호에 따라 밝기, 색깔 조절
-    const brightness = 100 - (rowIndex * 10);
-    const hue = 85; // 초록색 계열
-    const saturate = 100 + (rowIndex * 20); // 점점 채도 높아지게
+  // 발바닥 색깔
+  const getFootColor = (dayIndex: number) => {
+    const baseHue = 85; // 초록색 계열의 기본 색조
+    const saturationStep = 15; // 각 열마다 증가할 채도
+    const baseSaturation = 60; // 기본 채도
 
     return {
-      filter: `brighness(${brightness}%) hue-rotate(${hue}deg) saturate(${saturate}%)`,
+      filter: `hue-rotate(${baseHue}deg) saturate(${baseSaturation + (dayIndex * saturationStep)}%)`,
     };
   };
 
@@ -47,12 +37,12 @@ const HabitTable = ({ habits, onHabitChange } :
   };
 
   // 수정 모드 시작 시 현재 텍스트를 상태에 저장
-const startEditing = (habit: HabitRecord) => {
-  setEditingHabitId(habit.id);
-  setEditingText(habit.text);
-};
+  const startEditing = (habit: HabitRecord) => {
+    setEditingHabitId(habit.id);
+    setEditingText(habit.text);
+  };
 
-  // 습관 텍스트 업데이트하는 함수
+  // 습관 텍스트 업데이트
   const updateHabitText = (habitIndex: number) => {
     const newHabits = [...habits];
     newHabits[habitIndex].text = editingText;
@@ -60,98 +50,93 @@ const startEditing = (habit: HabitRecord) => {
     setEditingHabitId(null); // 수정 모드 종료
   };
 
-  const emptyRows = Array(Math.max(0, TOTAL_ROWS - habits.length)).fill(null);
+  // 빈 데이터 초기화
+  const initializeRows = () => {
+    const rows = [...habits];
+    while (rows.length < TOTAL_ROWS) {
+      rows.push({
+        id: rows.length + 1,
+        text: "",
+        days: Array(7).fill(false),
+      });
+    }
+    return rows;
+  };
+
+  const fixedHabits = initializeRows();
 
   // -------------------------------------------------------
   return (
     <div className="mt-10 p-6 rounded-[20px] border">
-      <h2 className="text-black text-2xl font-extrabold">습관 기록표</h2>
-      <div className="grid grid-cols-8 gap-4">
-      {/* 요일 헤더 */}
-        <div className="col-span-1"></div>
+      <h2 className="text-black text-2xl font-extrabold mb-6">습관 기록표</h2>
+      <div className="grid" style={{ gridTemplateColumns: "246px repeat(7, 1fr)",
+        height: "410px",
+        gridTemplateRows: "auto repeat(6, 1fr)",
+        gap: "1rem"
+      }}>
+        {/* 요일 헤더 */}
+        <div></div>
         {days.map((day) => (
-          <div key={day} className="text-center text-lg text-gray font-normal">{day}
+          <div
+            key={day}
+            className="text-center text-lg text-gray font-normal"
+          >
+            {day}
           </div>
         ))}
 
         {/* 습관 데이터 출력 */}
-        {habits.map((habit, habitIndex) => (
-          <div key={habit.id} className="col-span-8 grid grid-cols-8 gap-4 items-center">
-            <div className="col-span-1">
+        {fixedHabits.map((habit, habitIndex) => (
+          <>
+            {/* 습관 텍스트 입력 영역 */}
+            <div className="text-right font-bold text-lg">
               {editingHabitId === habit.id ? (
                 <input
-                type="text"
-                value={editingText}
-                onChange={(e) => setEditingText(e.target.value)}
-                onBlur={() => updateHabitText(habitIndex)}
-                onKeyDown={(e) => {
-                  if(e.key === 'Enter') {
-                    updateHabitText(habitIndex);
-                  }
-                }}
-                placeholder="습관 입력하기 //몇자이내 적기"
-                className="w-full p-1 border-none"
-                autoFocus
+                  type="text"
+                  value={editingText}
+                  onChange={(e) => setEditingText(e.target.value)}
+                  onBlur={() => updateHabitText(habitIndex)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      updateHabitText(habitIndex);
+                    }
+                  }}
+                  placeholder="15자 이내로 입력해주세요"
+                  className="w-full p-1 text-right h-9 border rounded placeholder-gray-light"
+                  autoFocus
                 />
               ) : (
                 <div
-                onClick={() => startEditing(habit)}
-                className="cursor-pointer p-1 rounded" >
-                  {habit.text}
+                  onClick={() => startEditing(habit)}
+                  className="cursor-pointer p-1 rounded text-gray-light"
+                >
+                  {habit.text || "여기에 입력해주세요"}
                 </div>
               )}
             </div>
 
             {/* 요일별 수행 상태 체크 */}
             {habit.days.map((isActive, dayIndex) => (
-              <div
-              key={dayIndex}
-              className="flex justify-center" >
+              <div key={dayIndex} className="flex justify-center">
                 <button
-                onClick={() => toggleDay(habitIndex, dayIndex)}
-                className="w-9 h-9 flex items-center justify-center rounded-full transition-colors duration-200"
-                style={getFootColor(habitIndex, isActive) }
+                  onClick={() => toggleDay(habitIndex, dayIndex)}
+                  className="w-9 h-9 flex items-center justify-center rounded-full transition-colors duration-200"
+                  style={getFootColor(dayIndex)}
                 >
-                <Image
-                src="/icons/ic_bg_selected.png"
-                alt="select-foot-icon"
-                width={36}
-                height={36}
-                />
+                  <Image
+                    src="/icons/ic_bg_selected.png"
+                    alt="select-foot-icon"
+                    width={36}
+                    height={36}
+                  />
                 </button>
-                </div>
-            ))}
-            </div>
-        ))}
-
-        {/* 빈행 추가 */}
-        {emptyRows.map((_, index) => (
-          <div key={`empty-${index}`} className="col-span-8 grid grid-cols-8 gap-4 items-center">
-            <div className="col-span-1">
-              <div className="p-1">-</div>
               </div>
-              {Array(7).fill(null).map((_, dayIndex) => (
-                <div key={dayIndex} className="flex justify-center">
-                <button
-                className="w-9 h-9 flex items-center justify-center rounded-full"
-                disabled
-                >
-                <Image
-                src="/icons/ic_bg_selected.png"
-                alt="select-foot-icon"
-                width={36}
-                height={36}
-                />
-                </button>
-                </div>
-
-              ))}
-            </div>
+            ))}
+            </>
         ))}
-
       </div>
     </div>
   );
-  }
+};
 
-  export default HabitTable;
+export default HabitTable;

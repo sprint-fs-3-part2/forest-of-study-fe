@@ -1,6 +1,5 @@
 export interface StudyDetail {
-  title: string;
-  description: string;
+    description: string;
 }
 
 export interface HabitRecord {
