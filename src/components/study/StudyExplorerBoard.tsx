@@ -15,19 +15,11 @@ const STUDY_EXPLORER_BOARD_CLASSES = {
   section:
     'container base-container grid grid-rows-[auto_1fr] max-w-[1200px] min-h-[822px] mx-auto gap-6',
 };
-
-type Study = {
-  id: string;
-  name: string;
-  nickname: string;
-  intro: string;
-  background: 'BLUE' | 'GREEN' | 'YELLOW' | 'RED';
-  password: string;
-  createdAt: Date;
-  updatedAt: Date;
-};
-
 export default function StudyExplorerBoard() {
+  interface Study {
+    id: string;
+    name: string;
+  }
   const [studies, setStudies] = useState<Study[]>([]);
   const [searchKeyword, setSearchKeyword] = useState<string>('');
   const [selectedSortOpt, setSelectedSortOpt] = useState<DropdownOption>(
