@@ -26,7 +26,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
-.env*.local
+.env.*
 
 # vercel
 .vercel
@@ -38,3 +38,8 @@ next-env.d.ts
 *storybook.log
 
 .vscode
+.idea
+*.iml
+*.iws
+.idea_modules/
+.tool-versions

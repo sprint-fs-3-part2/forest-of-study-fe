@@ -51,12 +51,12 @@ const config: Config = {
         xl: '1200px',
       },
       fontFamily: {
-        sans: ['var(--font-pretendard-variable)'],
+        sans: ['var(--font-pretendard-variable)', 'sans-serif'],
         pretendard: ['var(--font-pretendard-variable)'],
         jejudoldam: ['var(--font-jejudoldam)'],
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/forms')],
 };
 export default config;
