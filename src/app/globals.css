@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --background: #F6F4EF;
+  --background: #f6f4ef;
   --foreground: #171717;
 
   --black: #414141;
@@ -70,15 +70,15 @@ body {
 
 @layer components {
   .heading-2 {
-    @apply font-extrabold text-2xl text-black
+    @apply font-extrabold text-2xl text-black;
   }
   .caption-base {
-    @apply font-medium text-xl text-gray
+    @apply font-medium text-xl text-gray;
   }
   .base-container {
-    @apply bg-white rounded-[20px] p-10
+    @apply bg-white rounded-[20px] p-10;
   }
   .outlined {
-    @apply border border-gray-light rounded-[15px] text-base font-normal text-black placeholder:text-gray px-5 py-3
+    @apply border border-gray-light rounded-[15px] text-base font-normal text-black placeholder:text-gray px-5 py-3;
   }
 }
