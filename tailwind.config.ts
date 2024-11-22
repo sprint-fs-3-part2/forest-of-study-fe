@@ -8,6 +8,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      borderRadius: {
+       DEFAULT: '20px',
+      },
+      backgroundImage: {
+        'study-laptop' : "url('/image/laptop.webp')",
+        'study-plant' : "url('/image/plant.webp')",
+        'study-desk' : "url('/image/desk.webp')",
+        'study-wall' : "url('/image/wall.webp')",
+      },
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
