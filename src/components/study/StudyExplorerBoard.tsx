@@ -1,7 +1,8 @@
 'use client';
 import Dropdown, { type DropdownOption } from './Dropdown';
 import SearchInput from './SearchInput';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { fetchStudies } from '@/services/study/studyService';
 
 const SORT_OPTIONS: DropdownOption[] = [
   { label: '최신 순', orderBy: 'createdAt', order: 'desc' },
@@ -14,25 +15,24 @@ const STUDY_EXPLORER_BOARD_CLASSES = {
   section:
     'container base-container grid grid-rows-[auto_1fr] max-w-[1200px] min-h-[822px] mx-auto gap-6',
 };
-
-type Study = {
-  id: string;
-  name: string;
-  nickname: string;
-  intro: string;
-  background: 'blue' | 'green' | 'yellow' | 'red';
-
-  password: string;
-  createdAt: Date;
-  updatedAt: Date;
-};
-
 export default function StudyExplorerBoard() {
-  const [studies, _setStudies] = useState<Study[]>([]);
+  interface Study {
+    id: string;
+    name: string;
+  }
+  const [studies, setStudies] = useState<Study[]>([]);
   const [searchKeyword, setSearchKeyword] = useState<string>('');
   const [selectedSortOpt, setSelectedSortOpt] = useState<DropdownOption>(
     SORT_OPTIONS[0],
   );
+
+  useEffect(() => {
+    const loadStudies = async () => {
+      const studies = await fetchStudies();
+      setStudies(studies);
+    };
+    loadStudies();
+  }, []);
 
   return (
     <section className={STUDY_EXPLORER_BOARD_CLASSES.section}>
