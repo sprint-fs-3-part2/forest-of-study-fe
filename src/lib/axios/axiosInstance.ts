@@ -1,10 +1,9 @@
 import axios, { AxiosRequestConfig } from 'axios';
 
-const API_TIMEOUT = 10000;
+const API_TIMEOUT = 100000;
 
 const getBaseConfig = (): AxiosRequestConfig => {
-  const baseURL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8000';
-
+  const baseURL = process.env.NEXT_PUBLIC_API_URL;
   return {
     baseURL: baseURL,
     timeout: API_TIMEOUT,

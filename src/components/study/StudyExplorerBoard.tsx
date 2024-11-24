@@ -1,8 +1,12 @@
 'use client';
+
 import Dropdown, { type DropdownOption } from './Dropdown';
 import SearchInput from './SearchInput';
 import { useState, useEffect } from 'react';
 import { fetchStudies } from '@/services/study/studyService';
+import Link from 'next/link';
+import type { GetStudyDto } from '@/services/study/api/types';
+import StudyCardList from './StudyCardList';
 
 const SORT_OPTIONS: DropdownOption[] = [
   { label: '최신 순', orderBy: 'createdAt', order: 'desc' },
@@ -16,11 +20,7 @@ const STUDY_EXPLORER_BOARD_CLASSES = {
     'container base-container grid grid-rows-[auto_1fr] max-w-[1200px] min-h-[822px] mx-auto gap-6',
 };
 export default function StudyExplorerBoard() {
-  interface Study {
-    id: string;
-    name: string;
-  }
-  const [studies, setStudies] = useState<Study[]>([]);
+  const [studies, setStudies] = useState<GetStudyDto[]>([]);
   const [searchKeyword, setSearchKeyword] = useState<string>('');
   const [selectedSortOpt, setSelectedSortOpt] = useState<DropdownOption>(
     SORT_OPTIONS[0],
@@ -30,6 +30,7 @@ export default function StudyExplorerBoard() {
     const loadStudies = async () => {
       const studies = await fetchStudies();
       setStudies(studies);
+      console.log('studies', studies);
     };
     loadStudies();
   }, []);
@@ -37,7 +38,8 @@ export default function StudyExplorerBoard() {
   return (
     <section className={STUDY_EXPLORER_BOARD_CLASSES.section}>
       <h1 className='heading-2'>스터디 둘러보기</h1>
-      <div>
+
+      <div className='gap-6 flex flex-col'>
         <div className='flex justify-between'>
           <SearchInput
             name='search'
@@ -53,12 +55,16 @@ export default function StudyExplorerBoard() {
             onChange={(option) => setSelectedSortOpt(option)}
           />
         </div>
-        <div className='container grid place-items-center h-full'>
-          {studies.length > 0 &&
-            studies.map((study) => <div key={study.id}>{study.name}</div>)}
-          {studies?.length === 0 && (
-            <p className='caption-base'>아직 둘러 볼 스터디가 없어요</p>
-          )}
+
+        <StudyCardList studies={studies} />
+
+        <div className='grid grid-cols-3 pt-9'>
+          <button
+            type='button'
+            className='outlined text-green-text font-medium col-start-2'
+          >
+            더보기
+          </button>
         </div>
       </div>
     </section>
