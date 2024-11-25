@@ -5,7 +5,6 @@ import { useParams } from 'next/navigation';
 import { HabitUl, Time, ModalContent } from '@/components/habit/Index';
 import { useEffect, useState } from 'react';
 import { Modal } from '@/components/common/Modal';
-import { Study } from '@/lib/types/study.types';
 import { getStudyById } from '@/services/study/api/studyApi';
 import {
   createHabits,
@@ -14,11 +13,14 @@ import {
   getHabits,
 } from '@/services/habit/api/habitApi';
 import { HabitFormRow } from '@/components/habit/habitComponent.types';
-import { HabitResponseDto } from '@/lib/types/api/data-contracts';
+import {
+  CreateStudyDto,
+  HabitResponseDto,
+} from '@/lib/types/api/data-contracts';
 
 export default function DailyHabitPage() {
   const { id } = useParams<{ id: string }>();
-  const [study, setStudy] = useState<Study>();
+  const [study, setStudy] = useState<CreateStudyDto>();
   const [habits, setHabits] = useState<HabitResponseDto[]>([]);
   const [modalDisplay, setModalDisplay] = useState(false);
 
