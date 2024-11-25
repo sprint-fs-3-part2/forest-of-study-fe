@@ -16,7 +16,7 @@ export const ModalContent = ({
 
   const { register, handleSubmit, control } = useForm<HabitForm>({
     defaultValues: {
-      habits: initialHabits || [{ name: '', id: '' }],
+      habits: (initialHabits.length && initialHabits) || [{ name: '', id: '' }],
     },
   });
 

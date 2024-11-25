@@ -51,7 +51,7 @@ export default function DailyHabitPage() {
 
   useEffect(() => {
     fetchHabits();
-  }, [id]);
+  }, []);
 
   const handleSubmit = async (
     habitRows: HabitFormRow[],
