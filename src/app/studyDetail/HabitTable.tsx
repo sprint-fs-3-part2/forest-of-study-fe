@@ -140,7 +140,7 @@ const HabitTable = ({ habits, onHabitChange }: HabitTableProps) => {
                 </button>
               </div>
             ))}
-          </>
+          </React.Fragment>
         ))}
       </div>
     </div>

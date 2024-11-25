@@ -7,6 +7,7 @@ import { GNB } from '@/components/layout';
 import { StudyNav } from '@/components/common/StudyNav';
 
 export default function StudyDetailPage() {
+  // eslint-disable-next-line  @typescript-eslint/no-unused-vars
   const [studyDetail, setStudyDetail] = useState<StudyDetail>({
     description: '소개를 입력해주세요',
   });

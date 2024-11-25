@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // 공유, 수정, 삭제 컴포넌트
 
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 //import { toast } from "react-hot-toast";
 
 interface StudyActionProps {
@@ -11,9 +12,10 @@ interface StudyActionProps {
 }
 
 export default function StudyAction({
-  studyId, currentTitle, currentDescription
+  studyId,
+  currentTitle,
+  currentDescription,
 }: StudyActionProps) {
-
   const router = useRouter();
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -23,13 +25,14 @@ export default function StudyAction({
 
   const handleShare = () => {
     const currentUrl = window.location.href;
-    navigator.clipboard.writeText(currentUrl)
-    .then(() => {
-      //toast.success('URL이 복사되었습니다.');
-    })
-    .catch(err => {
-      //toast.error('복사에 실패했습니다.');
-    });
+    navigator.clipboard
+      .writeText(currentUrl)
+      .then(() => {
+        //toast.success('URL이 복사되었습니다.');
+      })
+      .catch((err) => {
+        //toast.error('복사에 실패했습니다.');
+      });
   };
 
   const handleDelete = async () => {
@@ -39,8 +42,6 @@ export default function StudyAction({
   const confirmDelete = async () => {
     try {
       //const response = await
-    } catch(err){
-
-    }
-  }
+    } catch (err) {}
+  };
 }

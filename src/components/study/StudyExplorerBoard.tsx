@@ -4,7 +4,6 @@ import Dropdown, { type DropdownOption } from './Dropdown';
 import SearchInput from './SearchInput';
 import { useState, useEffect } from 'react';
 import { fetchStudies } from '@/services/study/studyService';
-import Link from 'next/link';
 import type { GetStudyDto } from '@/services/study/api/types';
 import StudyCardList from './StudyCardList';
 
