@@ -1,14 +1,13 @@
 export interface Habit {
   id: string;
   name: string;
-  studyId: string;
+  completedHabitsThisWeek: CompletedHabit[];
+  completedToday: boolean;
 }
-
-export type HabitWithoutStudyId = Omit<Habit, 'studyId'>;
 
 export interface CompletedHabit {
   id: string;
-  completeDate: Date;
+  completeAt: Date;
   habitId: string;
   studyId: string;
 }

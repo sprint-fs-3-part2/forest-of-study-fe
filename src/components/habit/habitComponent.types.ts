@@ -1,12 +1,13 @@
-import { HabitWithoutStudyId, TodayHabit } from '@/lib/types/habit/habit.types';
+import { HabitResponseDto } from '@/lib/types/api/data-contracts';
 
 export interface HabitLiProps {
-  habit: TodayHabit;
-  onClick: (id: string) => void;
+  habit: HabitResponseDto;
+  onClick: (habitId: string, habitComplete: boolean) => void;
 }
 
 export interface HabitUlProps {
-  habits: TodayHabit[];
+  habits: HabitResponseDto[];
+  switchHabitComplete: (habitId: string) => void;
 }
 
 export interface ModalRowProps {
@@ -15,15 +16,20 @@ export interface ModalRowProps {
   onDelete: () => void;
 }
 
+export interface HabitFormRow {
+  name: string;
+  id: string;
+}
+
 export interface HabitForm {
-  habits: HabitWithoutStudyId[];
+  habits: HabitFormRow[];
 }
 
 export interface ModalContentProps {
   onClose: () => void;
-  initialHabits: HabitWithoutStudyId[];
+  initialHabits: HabitResponseDto[];
   onSubmit: (
-    habits: HabitWithoutStudyId[],
+    habits: HabitFormRow[],
     deletedHabitIds: string[],
-  ) => Promise<Response>;
+  ) => Promise<void>;
 }

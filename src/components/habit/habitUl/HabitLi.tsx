@@ -7,15 +7,15 @@ const COLORS = {
 };
 
 export const HabitLi = ({
-  habit: { id, complete, name },
+  habit: { id, completedToday, name },
   onClick,
 }: HabitLiProps) => {
   return (
     <button
-      onClick={() => onClick(id)}
+      onClick={() => onClick(id, completedToday)}
       className={cn(
         'w-full min-h-[54px] rounded-[20px] flex items-center justify-center cursor-pointer font-bold',
-        COLORS[complete ? 'complete' : 'incomplete'],
+        COLORS[completedToday ? 'complete' : 'incomplete'],
       )}
     >
       {name}
