@@ -1,10 +1,11 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+
+import type { GetStudyDto } from '@/services/study/api/types';
+import { fetchStudies } from '@/services/study/studyService';
 import Dropdown, { type DropdownOption } from './Dropdown';
 import SearchInput from './SearchInput';
-import { useState, useEffect } from 'react';
-import { fetchStudies } from '@/services/study/studyService';
-import type { GetStudyDto } from '@/services/study/api/types';
 import StudyCardList from './StudyCardList';
 
 const SORT_OPTIONS: DropdownOption[] = [
@@ -17,7 +18,8 @@ const SORT_OPTIONS: DropdownOption[] = [
 const STUDY_EXPLORER_BOARD_CLASSES = {
   section:
     'container base-container grid grid-rows-[auto_1fr] max-w-[1200px] min-h-[822px] mx-auto gap-6',
-};
+} as const;
+
 export default function StudyExplorerBoard() {
   const [studies, setStudies] = useState<GetStudyDto[]>([]);
   const [searchKeyword, setSearchKeyword] = useState<string>('');
@@ -28,9 +30,10 @@ export default function StudyExplorerBoard() {
   useEffect(() => {
     const loadStudies = async () => {
       const studies = await fetchStudies();
+
       setStudies(studies);
-      console.log('studies', studies);
     };
+
     loadStudies();
   }, []);
 
@@ -54,7 +57,6 @@ export default function StudyExplorerBoard() {
             onChange={(option) => setSelectedSortOpt(option)}
           />
         </div>
-
         <StudyCardList studies={studies} />
 
         <div className='pt-9 grid grid-cols-3'>

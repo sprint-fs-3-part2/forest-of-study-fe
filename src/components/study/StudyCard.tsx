@@ -1,34 +1,43 @@
+import { useMemo } from 'react';
+import dayjs from '@/lib/dayjs';
 import cn from '@/lib/cn';
-import { BackgroundType, GetStudyDto } from '@/services/study/api/types';
+import {
+  ImgBgType,
+  ColorBgType,
+  GetStudyDto,
+} from '@/services/study/api/types';
 
-type BgColor = 'green' | 'yellow' | 'blue' | 'pink';
+const IMG_BACKGROUNDS: ImgBgType[] = ['wall', 'desk', 'laptop', 'plant'];
 
-const nicknameClass: Record<BgColor, string> = {
+const nicknameClass: Record<ColorBgType, string> = {
   green: 'text-green-text',
   yellow: 'text-yellow-text',
   blue: 'text-blue-text',
   pink: 'text-pink-text',
 };
+export default function StudyCard({
+  name,
+  nickname,
+  intro,
+  background,
+  createdAt,
+}: Readonly<GetStudyDto>) {
+  const isImgBg = IMG_BACKGROUNDS.includes(background as ImgBgType);
+  const duration = useMemo(() => {
+    return dayjs(createdAt).fromNow(true);
+  }, [createdAt]);
 
-export default function StudyCard(study: Readonly<GetStudyDto>) {
-  const { name, nickname, intro, background } = study;
-  const isImgBg = ['wall', 'desk', 'laptop', 'plant'].includes(background);
   return (
     <article
       className={cn(
-        'grid rounded border-black-10 border p-[30px] gap-y-3 md:gap-y-[30px] aspect-card-sm md:aspect-card-md xl:aspect-card',
+        'h-full grid rounded border-black-10 border p-[30px] gap-y-3 md:gap-y-[30px]',
         { '[&_*]:text-white': isImgBg },
       )}
     >
       <section>
         <div className='flex justify-between'>
           <h3 className='heading-3'>
-            <span
-              className={cn(
-                !isImgBg &&
-                  nicknameClass[background as Extract<BackgroundType, BgColor>],
-              )}
-            >
+            <span className={cn(!isImgBg && nicknameClass[background])}>
               {nickname}
             </span>
             {` 의 ${name}`}
@@ -36,7 +45,7 @@ export default function StudyCard(study: Readonly<GetStudyDto>) {
           <div>포인트 획득</div>
         </div>
         <div>
-          <p className='caption-sm tabular-nums'>-일째 진행중</p>
+          <p className='caption-sm tabular-nums'>{duration} 째 진행중</p>
         </div>
       </section>
 
