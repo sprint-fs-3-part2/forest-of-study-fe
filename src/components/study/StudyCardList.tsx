@@ -3,7 +3,9 @@ import Link from 'next/link';
 import StudyCard from './StudyCard';
 import cn from '@/lib/cn';
 
-const bgClass = {
+type BackgroundType = 'blue' | 'pink' | 'green' | 'yellow' | 'wall' | 'desk' | 'laptop' | 'plant';
+
+const bgClass: Record<BackgroundType, string> = {
   blue: 'bg-blue',
   pink: 'bg-pink',
   green: 'bg-green',
