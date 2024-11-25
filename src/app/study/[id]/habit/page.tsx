@@ -61,10 +61,10 @@ export default function DailyHabitPage() {
   ) => {
     const editedHabits = habitRows.filter((habit) => {
       const originalHabit = habits.find((ogHabit) => ogHabit.id === habit.id);
-      return originalHabit?.name !== habit.name && habit.id;
+      return originalHabit?.name !== habit.name && habit.id !== '';
     });
     const newHabits = habitRows.filter(
-      (habit) => habit.id && habit.name !== '',
+      (habit) => habit.id === '' && habit.name !== '',
     );
     editedHabits.length && (await editHabits(id, { habits: editedHabits }));
     newHabits.length && (await createHabits(id, { habits: newHabits }));
