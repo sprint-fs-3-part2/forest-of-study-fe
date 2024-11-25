@@ -1,9 +1,11 @@
+'use client';
+
 const RECENT_STUDY_BOARD_CLASSES = {
   section:
     'container base-container grid grid-rows-[auto_1fr] max-w-[1200px] min-h-[382px] mx-auto gap-6',
 };
 
-export default async function RecentStudyBoard() {
+export default function RecentStudyBoard() {
   return (
     <section
       className={RECENT_STUDY_BOARD_CLASSES.section}
