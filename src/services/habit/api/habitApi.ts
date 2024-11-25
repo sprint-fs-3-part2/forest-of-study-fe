@@ -5,14 +5,22 @@ import {
   StudyHabitsResponseDto,
   UpdateHabitsDto,
 } from '@/lib/types/api/data-contracts';
+import axios from 'axios';
 
 const HABITS_URL = 'habits';
 
 export const getHabits = async (studyId: string) => {
-  const { data } = await axiosInstance.get<StudyHabitsResponseDto>(
-    `/${HABITS_URL}/${studyId}`,
-  );
-  return data;
+  try {
+    const { data } = await axiosInstance.get<StudyHabitsResponseDto>(
+      `/${HABITS_URL}/${studyId}`,
+    );
+    return data;
+  } catch (e) {
+    if (axios.isAxiosError(e)) {
+      throw new Error(`습관 목록을 불러오는데 실패했습니다: ${e.message}`);
+    }
+    throw e;
+  }
 };
 
 export const createHabits = async (

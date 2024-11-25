@@ -18,9 +18,11 @@ import {
   HabitResponseDto,
 } from '@/lib/types/api/data-contracts';
 
+interface GetStudyDto extends CreateStudyDto {}
+
 export default function DailyHabitPage() {
   const { id } = useParams<{ id: string }>();
-  const [study, setStudy] = useState<CreateStudyDto>();
+  const [study, setStudy] = useState<GetStudyDto>();
   const [habits, setHabits] = useState<HabitResponseDto[]>([]);
   const [modalDisplay, setModalDisplay] = useState(false);
 
@@ -59,10 +61,10 @@ export default function DailyHabitPage() {
   ) => {
     const editedHabits = habitRows.filter((habit) => {
       const originalHabit = habits.find((ogHabit) => ogHabit.id === habit.id);
-      return originalHabit?.name !== habit.name && habit.id !== '';
+      return originalHabit?.name !== habit.name && habit.id;
     });
     const newHabits = habitRows.filter(
-      (habit) => habit.id === '' && habit.name !== '',
+      (habit) => habit.id && habit.name !== '',
     );
     editedHabits.length && (await editHabits(id, { habits: editedHabits }));
     newHabits.length && (await createHabits(id, { habits: newHabits }));
