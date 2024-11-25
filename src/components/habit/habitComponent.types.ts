@@ -1,5 +1,4 @@
 import { HabitResponseDto } from '@/lib/types/api/data-contracts';
-import type { UseFormRegister } from 'react-hook-form';
 
 export interface HabitLiProps {
   habit: HabitResponseDto;
@@ -12,7 +11,7 @@ export interface HabitUlProps {
 }
 
 export interface ModalRowProps {
-  register: UseFormRegister<HabitForm>;
+  register: any;
   name: string;
   onDelete: () => void;
 }
