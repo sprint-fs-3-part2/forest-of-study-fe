@@ -2,14 +2,11 @@
 
 import React, { useState } from 'react';
 import HabitTable from './HabitTable';
-import { useRouter } from 'next/navigation';
 import { HabitRecord, StudyDetail } from './type';
 import { GNB } from '@/components/layout';
 import { StudyNav } from '@/components/common/StudyNav';
 
 export default function StudyDetailPage() {
-  const router = useRouter;
-  // const [isEditing, setIsEditing] = useState(false); // 수정 모드 여부
   const [studyDetail, setStudyDetail] = useState<StudyDetail>({
     description: '소개를 입력해주세요',
   });

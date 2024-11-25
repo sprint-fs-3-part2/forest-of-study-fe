@@ -16,7 +16,7 @@ export default function StudyAction({
 
   const router = useRouter();
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
-  const [isEditMadalOpen, setIsEditMadalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [password, setPassword] = useState('');
   const [editedTitle, setEditTitle] = useState(currentTitle);
   const [editedDescription, setEditDescription] = useState(currentDescription);

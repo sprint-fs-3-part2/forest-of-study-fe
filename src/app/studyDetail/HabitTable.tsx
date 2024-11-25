@@ -1,6 +1,6 @@
 // 습관 기록표
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { HabitRecord } from './type';
 import Image from 'next/image';
 
@@ -92,7 +92,7 @@ const HabitTable = ({ habits, onHabitChange }: HabitTableProps) => {
 
         {/* 습관 데이터 출력 */}
         {fixedHabits.map((habit, habitIndex) => (
-          <>
+          <React.Fragment key={habit.id}>
             {/* 습관 텍스트 입력 영역 */}
             <div className='text-right font-bold text-lg'>
               {editingHabitId === habit.id ? (
@@ -133,7 +133,7 @@ const HabitTable = ({ habits, onHabitChange }: HabitTableProps) => {
                 >
                   <Image
                     src='/icons/ic_bg_selected.png'
-                    alt='select-foot-icon'
+                    alt={`${days[dayIndex]}요일 습관 체크 아이콘`}
                     width={36}
                     height={36}
                   />
