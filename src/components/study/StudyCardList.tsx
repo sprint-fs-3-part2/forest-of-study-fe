@@ -1,18 +1,33 @@
 import { GetStudyDto } from '@/services/study/api/types';
 import Link from 'next/link';
 import StudyCard from './StudyCard';
+import cn from '@/lib/cn';
+
+const bgClass = {
+  blue: 'bg-blue',
+  pink: 'bg-pink',
+  green: 'bg-green',
+  yellow: 'bg-yellow',
+  wall: 'bg-study-wall [&>*]:bg-black-50',
+  desk: 'bg-study-desk [&>*]:bg-black-50',
+  laptop: 'bg-study-laptop [&>*]:bg-black-50 ',
+  plant: 'bg-study-plant [&>*]:bg-black-50 ',
+};
 
 export default function StudyCardList({
   studies,
 }: Readonly<{ studies: GetStudyDto[] }>) {
   return (
-    <div className='container grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3'>
+    <div className='md:grid-cols-2 xl:grid-cols-3 place-content-center container grid grid-cols-1 gap-6 mx-auto'>
       {studies.length > 0 &&
         studies.map((study) => (
           <Link
             key={study.id}
             href={`/study/${study.id}`}
-            className='w-full h-full'
+            className={cn(
+              'w-full h-full bg-cover rounded bg-no-repeat bg-center min-h-[180px]',
+              bgClass[study.background],
+            )}
           >
             <StudyCard {...study} />
           </Link>

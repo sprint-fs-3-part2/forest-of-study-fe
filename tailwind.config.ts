@@ -11,8 +11,13 @@ const config: Config = {
       borderRadius: {
        DEFAULT: '20px',
       },
+      aspectRatio: {
+        'card' : '358 / 243',
+        'card-md' : '312 / 243',
+        'card-sm' : '312 / 180',
+      },
       backgroundImage: {
-        'study-green': "url('/image/green.webp')",
+        'study-green': " url('/image/green.webp')",
         'study-yellow': "url('/image/yellow.webp')",
         'study-blue': "url('/image/blue.webp')",
         'study-pink': "url('/image/pink.webp')",

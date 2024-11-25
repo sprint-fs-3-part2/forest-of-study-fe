@@ -39,8 +39,8 @@ export default function StudyExplorerBoard() {
     <section className={STUDY_EXPLORER_BOARD_CLASSES.section}>
       <h1 className='heading-2'>스터디 둘러보기</h1>
 
-      <div className='gap-6 flex flex-col'>
-        <div className='flex justify-between'>
+      <div className='flex flex-col gap-6'>
+        <div className='flex justify-between flex-col sm:flex-row'>
           <SearchInput
             name='search'
             value={searchKeyword}
@@ -58,10 +58,10 @@ export default function StudyExplorerBoard() {
 
         <StudyCardList studies={studies} />
 
-        <div className='grid grid-cols-3 pt-9'>
+        <div className='pt-9 grid grid-cols-3'>
           <button
             type='button'
-            className='outlined text-green-text font-medium col-start-2'
+            className='outlined text-green-text col-start-2 font-medium'
           >
             더보기
           </button>
