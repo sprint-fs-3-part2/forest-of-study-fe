@@ -75,19 +75,23 @@ npm run codegen
 
   - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint): 코드 린팅 및 스타일 검사
   - [Pretty TypeScript Errors](https://marketplace.visualstudio.com/items?itemName=yoavbls.pretty-ts-errors): TypeScript 에러 메시지를 더 읽기 쉽게 표시
+
 - **스타일링**
 
   - [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss): Tailwind CSS 클래스 자동 완성 및 하이라이트
   - [Headwind](https://marketplace.visualstudio.com/items?itemName=heybourn.headwind): Tailwind CSS 클래스 자동 정렬
+
 - **개발 생산성**
 
   - [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=editorconfig.editorconfig): 일관된 코드 스타일 유지
   - [NVM for VSCode](https://marketplace.visualstudio.com/items?itemName=abumalick.vscode-nvm): VS Code 내에서 nvm 통합
   - [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker): 코드 내 영문 철자 검사 지원
+
 - **TODO 관리**
 
   - [Todo Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree): 코드 내 TODO 주석을 트리 형태로 표시
   - [Todo Highlight](https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight): TODO 주석 강조 표시
+
 - **Git**
 
   - [Gitmoji](https://marketplace.visualstudio.com/items?itemName=seatonjiang.gitmoji-vscode): 커밋 메시지에 이모지 추가 지원
