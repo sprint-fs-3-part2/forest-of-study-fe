@@ -51,7 +51,7 @@ export function Reaction({
 }) {
   const reactionsEntry = Object.entries(reactions).sort((a, b) => b[1] - a[1]);
   const threeReactions = reactionsEntry.slice(0, 3);
-  const restReactions = reactionsEntry.slice(4);
+  const restReactions = reactionsEntry.slice(3);
   const [showMoreReaction, setShowMoreReaction] = useState(false);
   const handleEmojiSelect = (emoji: string) => {
     addReaction(emoji);
