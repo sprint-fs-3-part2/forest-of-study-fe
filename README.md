@@ -13,6 +13,7 @@
 | 김지연 | FullStack | [Github](https://github.com/dani784601) |
 | 김태훈 | FullStack | [Github](https://github.com/Zero5338) |
 | 최혜지 | FullStack | [Github](https://github.com/heziss) |
+| 함헌규 | FullStack | [Github](https://github.com/heonq) |
 
 📎 [팀 협업 문서](https://www.notion.so/1372b1ba9a1780329a55d5a0b1554344?v=1372b1ba9a1781bcbcbf000cf959a184)
 
