@@ -1,5 +1,4 @@
-export type ColorBgType = 'green' | 'yellow' | 'blue' | 'pink';
-
+export type ColorBgType = 'blue' | 'pink' | 'green' | 'yellow';
 export type ImgBgType = 'wall' | 'desk' | 'laptop' | 'plant';
 
 export type BgType = ColorBgType | ImgBgType;
