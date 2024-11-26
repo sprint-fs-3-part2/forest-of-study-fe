@@ -28,7 +28,7 @@ const useTimer = ({
   }
 
   const [isPaused, setIsPaused] = useState<boolean>(true); // 일시정지 상태
-  const [secondsLeft, setSecondsLeft] = useState<number>(10); // 남은 시간
+  const [secondsLeft, setSecondsLeft] = useState<number>(initialTime); // 남은 시간
   const [showGetPointNotification, setGetPointShowNotification] =
     useState<boolean>(false); // 포인트 획득 알림창 표시 여부
   const [point, setPoint] = useState<number>(0);
