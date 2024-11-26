@@ -22,10 +22,10 @@ const CLASSES = {
 } as const;
 
 interface StudyGridProps {
-  studies: GetStudyDto[];
+  studies: readonly GetStudyDto[];
 }
 
-export default function StudyGrid({ studies }: Readonly<StudyGridProps>) {
+export function StudyGrid({ studies }: Readonly<StudyGridProps>) {
   return (
     <div className={STUDY_GRID_CLASSES.container}>
       {studies.map((study) => (

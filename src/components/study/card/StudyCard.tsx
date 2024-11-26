@@ -61,13 +61,14 @@ export default function StudyCard({
   return (
     <article className={CLASSES.container}>
       <section>
-        <div className='flex justify-between'>
-          <h3 className='heading-3'>
+        <div className='flex justify-between max-w-full'>
+          <h3 className='heading-3 line-clamp-1 overflow-hidden whitespace-nowrap text-ellipsis max-w-[50%]'>
             <span className={CLASSES.nickname}>{nickname}</span>
             {` 의 ${name}`}
           </h3>
-          <div>
+          <div className='flex-0'>
             <IconTag
+              className='whitespace-nowrap'
               variant='point'
               parentComponent='card'
               fillColor={isImgBg ? 'black' : 'white'}
@@ -78,12 +79,14 @@ export default function StudyCard({
           </div>
         </div>
         <div>
-          <p className={CLASSES.duration}>{duration} 째 진행중</p>
+          <p className={CLASSES.duration}>{duration}째 진행중</p>
         </div>
       </section>
 
       <section>
-        <p className='lead'>{intro}</p>
+        <p className='lead line-clamp-2 overflow-hidden whitespace-nowrap text-ellipsis'>
+          {intro}
+        </p>
       </section>
 
       <section className='flex gap-[5px] md:pt-6'>

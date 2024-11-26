@@ -11,7 +11,7 @@ const TimerDisplay = ({
 }: TimerDisplayProps) => {
   return (
     <span
-      className={`font-extrabold text-[80px] md:text-[120px] xl:text-[150px]   ${
+      className={`font-extrabold tabular-nums transition-all text-[80px] md:text-[120px] xl:text-[150px]   ${
         secondsLeft < 0 ? 'text-gray' : secondsLeft < 10 ? 'text-red' : ''
       }`}
     >
