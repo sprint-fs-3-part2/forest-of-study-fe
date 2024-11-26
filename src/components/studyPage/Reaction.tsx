@@ -5,6 +5,7 @@ import { IconTag } from '../common/IconTag';
 import PlusIcon from '@/public/icons/ic_plus-1.png';
 import AddReactionIcon from '@/public/icons/add_reaction_icon.png';
 import { MoreReactionProps, ReactionsType } from './studyPage.types';
+import { EmojiPickerComponent } from './EmojiPicker';
 
 const ReactionsComponents = ({
   reactions,
@@ -46,6 +47,10 @@ export function Reaction({ reactions }: { reactions: ReactionsType }) {
   const threeReactions = reactionsEntry.slice(0, 3);
   const restReactions = reactionsEntry.slice(4);
   const [showMoreReaction, setShowMoreReaction] = useState(false);
+  const handleEmojiSelect = (emoji: string) => {
+    console.log('Selected emoji:', emoji);
+    // 여기서 선택된 이모지 처리
+  };
 
   return (
     <div className='flex gap-1'>
@@ -71,14 +76,7 @@ export function Reaction({ reactions }: { reactions: ReactionsType }) {
         )}
       </div>
       <div>
-        <IconTag
-          variant='reaction'
-          parentComponent='page'
-          fillColor='white'
-          icon={AddReactionIcon}
-          text='추가'
-          className='cursor-pointer'
-        />
+        <EmojiPickerComponent onEmojiSelect={handleEmojiSelect} />
       </div>
     </div>
   );
