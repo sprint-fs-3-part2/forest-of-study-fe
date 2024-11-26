@@ -27,27 +27,27 @@ export default function StudyCard({
   const duration = useMemo(() => {
     return dayjs(createdAt).fromNow(true);
   }, [createdAt]);
-  const styles = {
+  const CLASSES = {
     container: cn(
       'h-full grid rounded border-black-10 border p-[30px] gap-y-3 md:gap-y-[30px]',
-      { '[&_*]:text-white': isImgBg },
+      { '[&_*]:text-white bg-black-50': isImgBg },
     ),
     nickname: cn(!isImgBg && nicknameClass[background as ColorBgType]),
     duration: 'caption-sm tabular-nums',
-  };
+  } as const;
 
   return (
-    <article className={styles.container}>
+    <article className={CLASSES.container}>
       <section>
         <div className='flex justify-between'>
           <h3 className='heading-3'>
-            <span className={styles.nickname}>{nickname}</span>
+            <span className={CLASSES.nickname}>{nickname}</span>
             {` 의 ${name}`}
           </h3>
           <div>포인트 획득</div>
         </div>
         <div>
-          <p className={styles.duration}>{duration} 째 진행중</p>
+          <p className={CLASSES.duration}>{duration} 째 진행중</p>
         </div>
       </section>
 

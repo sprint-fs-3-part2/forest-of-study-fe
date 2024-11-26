@@ -1,6 +1,8 @@
 import { getStudies } from '@/services/study/api/studyApi';
 
-export const fetchStudies = async () => {
-  const studies = await getStudies();
+import type { GetStudyDto, StudyQueryType } from './api/types';
+
+export const fetchStudies = async (query?: StudyQueryType) => {
+  const studies = await getStudies(query);
   return studies;
 };
