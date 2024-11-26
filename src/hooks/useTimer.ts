@@ -71,15 +71,19 @@ const useTimer = (initialTime: number): TimerReturnType => {
     const totalPoint = tenMinutesGetPoint * finishPoint;
     setPoint(totalPoint);
 
-    // 알림창 표시
-    setGetPointShowNotification(true);
+    try {
+      await patchFocusPoint(studyId, totalPoint);
 
-    await patchFocusPoint(studyId, totalPoint);
-
-    // 5초 후 알림창 숨김
-    hideNotificationTimeout = setTimeout(() => {
+      // 알림창 표시
+      setGetPointShowNotification(true);
+      // 5초 후 알림창 숨김
+      hideNotificationTimeout = setTimeout(() => {
+        setGetPointShowNotification(false);
+      }, 5000);
+    } catch (error) {
+      console.error('포인트 업데이트 실패:', error);
       setGetPointShowNotification(false);
-    }, 5000);
+    }
 
     // 타이머 초기화
     reset();
