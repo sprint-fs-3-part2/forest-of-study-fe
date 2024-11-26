@@ -1,3 +1,5 @@
+'use client';
+
 import { useMemo } from 'react';
 
 import cn from '@/lib/cn';
@@ -9,6 +11,7 @@ import {
 } from '@/services/study/api/types';
 import { IconTag } from '@/components/common/IconTag';
 import PointIcon from '@/public/icons/point_icon.png';
+import Store from '@/utils/store';
 
 const REACTION_EMOJI = ['💡', '👍', '✨', '🔥', '💪', '🎯', '👏', '🌟', '💯'];
 interface ReactionData {
@@ -43,6 +46,7 @@ export default function StudyCard({
   background,
   createdAt,
   points,
+  id,
 }: Readonly<GetStudyDto>) {
   const reactions = useMemo(generateRandomReactions, []);
   const isImgBg = IMG_BACKGROUNDS.includes(background as ImgBgType);
@@ -58,8 +62,17 @@ export default function StudyCard({
     duration: 'caption-sm tabular-nums',
   } as const;
 
+  const onClick = (studyId: string) => {
+    const recentStudy = Store.getItem('recentStudy') ?? [];
+    const newRecentStudy = Array.from(new Set([studyId, ...recentStudy]));
+    Store.setItem('recentStudy', newRecentStudy);
+  };
+
   return (
-    <article className={CLASSES.container}>
+    <article
+      onClick={() => onClick(id)}
+      className={CLASSES.container}
+    >
       <section>
         <div className='flex justify-between max-w-full'>
           <h3 className='heading-3 line-clamp-1 text-ellipsis '>
@@ -87,7 +100,7 @@ export default function StudyCard({
         <p className='lead line-clamp-2 text-ellipsis'>{intro}</p>
       </section>
 
-      <section className='flex gap-[5px] md:pt-6'>
+      <section className='flex gap-[5px] md:pt-6 items-center'>
         {reactions.map((reaction) => (
           <IconTag
             key={reaction.emoji}

@@ -5,6 +5,7 @@ import { getBgType } from '@/lib/utils/typeGuards';
 import type { GetStudyDto } from '@/services/study/api/types';
 
 import { Study } from '..';
+import Store from '@/utils/store';
 
 const CLASSES = {
   studyLink: [
