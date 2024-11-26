@@ -31,7 +31,7 @@ export default function StudyCard({
       'h-full grid rounded border-black-10 border p-[30px] gap-y-3 md:gap-y-[30px]',
       { '[&_*]:text-white': isImgBg },
     ),
-    nickname: cn(!isImgBg && nicknameClass[background]),
+    nickname: cn(!isImgBg && nicknameClass[background as ColorBgType]),
     duration: 'caption-sm tabular-nums',
   };
 
