@@ -118,7 +118,7 @@ export default function StudyPage() {
             icon={PointIcon}
             parentComponent='page'
             fillColor='white'
-            text={`310P 획득`}
+            text={`${study?.points ?? 0}P 획득`}
           />
         </div>
         {habit && <HabitTable habitsProps={habit} />}
