@@ -20,6 +20,7 @@ export type GetStudyDto = {
   intro: string;
   background: BgType;
   createdAt: string;
+  points: number;
 };
 
 export interface DropdownOption {

@@ -7,6 +7,24 @@ import {
   ColorBgType,
   GetStudyDto,
 } from '@/services/study/api/types';
+import { IconTag } from '@/components/common/IconTag';
+
+const REACTION_EMOJI = ['💡', '👍', '✨', '🔥', '💪', '🎯', '👏', '🌟', '💯'];
+interface ReactionData {
+  emoji: string;
+  count: number;
+}
+
+export const generateRandomReactions = (): ReactionData[] => {
+  const length = Math.floor(Math.random() * 4);
+  const shuffledEmojis = [...REACTION_EMOJI]
+    .sort(() => Math.random() - 0.5)
+    .slice(0, length);
+  return shuffledEmojis.map((emoji) => ({
+    emoji,
+    count: Math.floor(Math.random() * 500) + 1,
+  }));
+};
 
 const IMG_BACKGROUNDS: ImgBgType[] = ['wall', 'desk', 'laptop', 'plant'];
 
@@ -16,6 +34,7 @@ const nicknameClass: Record<ColorBgType, string> = {
   blue: 'text-blue-text',
   pink: 'text-pink-text',
 };
+
 export default function StudyCard({
   name,
   nickname,
@@ -23,6 +42,7 @@ export default function StudyCard({
   background,
   createdAt,
 }: Readonly<GetStudyDto>) {
+  const reactions = useMemo(generateRandomReactions, []);
   const isImgBg = IMG_BACKGROUNDS.includes(background as ImgBgType);
   const duration = useMemo(() => {
     return dayjs(createdAt).fromNow(true);
@@ -56,9 +76,17 @@ export default function StudyCard({
       </section>
 
       <section className='flex gap-[5px] md:pt-6'>
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
+        {reactions.map((reaction) => (
+          <IconTag
+            key={reaction.emoji}
+            variant='reaction'
+            parentComponent='card'
+            fillColor='black'
+            icon={reaction.emoji}
+            text={reaction.count.toString()}
+            backgroundType={isImgBg ? 'image' : 'color'}
+          />
+        ))}
       </section>
     </article>
   );
