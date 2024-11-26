@@ -46,7 +46,7 @@ type NotificationProps = {
 const Notification = ({ bgColor, textColor, children }: NotificationProps) => {
   return (
     <div
-      className={`absolute bottom-[50px] px-7 py-3 bg-${bgColor} text-${textColor} font-medium rounded-xl`}
+      className={`absolute bottom-[0px] px-7 py-3 bg-${bgColor} text-${textColor} font-medium rounded-xl`}
     >
       {children}
     </div>
