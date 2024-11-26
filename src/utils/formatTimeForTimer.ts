@@ -9,19 +9,33 @@ export const formatTimeForTimer = (minutes: number, seconds: number) => {
     throw new Error('유효하지 않은 입력값입니다.');
   }
 
-  // 초 정규화 (예: 75초 -> 1분 15초)
-  const normalizedMinutes = minutes + Math.floor(seconds / 60);
-  const normalizedSeconds = seconds % 60;
+  // 음수 초 처리 로직 개선
+  let totalSeconds = minutes * 60 + seconds;
+  const isNegative = totalSeconds < 0;
+  totalSeconds = Math.abs(totalSeconds);
 
-  const absMinutes = Math.abs(normalizedMinutes);
-  const absSeconds = Math.abs(normalizedSeconds);
-  // 타이머 화면 표시 처리 (양수일 때 & 음수일 때)
+  const normalizedMinutes = Math.floor(totalSeconds / 60);
+  const normalizedSeconds = totalSeconds % 60;
+
+  // minutes가 마이너스일 때 +1 해주는 로직
+  const adjustedMinutes =
+    isNegative && normalizedMinutes > 0
+      ? normalizedMinutes - 1
+      : normalizedMinutes;
+
   const formattedMinutes =
-    absMinutes < 10
-      ? `${normalizedMinutes < 0 ? '-' : ''}0${absMinutes}`
-      : normalizedMinutes.toString();
+    adjustedMinutes === 0 && isNegative
+      ? '-00'
+      : adjustedMinutes < 10
+        ? `${isNegative ? '-' : ''}0${Math.abs(adjustedMinutes)}`
+        : `${isNegative ? '-' : ''}${adjustedMinutes}`;
+
   const formattedSeconds =
-    absSeconds < 10 ? `0${absSeconds}` : absSeconds.toString();
+    normalizedSeconds === 0 && isNegative
+      ? '01'
+      : normalizedSeconds < 10
+        ? `0${normalizedSeconds}`
+        : `${normalizedSeconds}`;
 
   return { formattedMinutes, formattedSeconds };
 };
