@@ -8,6 +8,7 @@ import {
   GetStudyDto,
 } from '@/services/study/api/types';
 import { IconTag } from '@/components/common/IconTag';
+import PointIcon from '@/public/icons/point_icon.png';
 
 const REACTION_EMOJI = ['💡', '👍', '✨', '🔥', '💪', '🎯', '👏', '🌟', '💯'];
 interface ReactionData {
@@ -41,6 +42,7 @@ export default function StudyCard({
   intro,
   background,
   createdAt,
+  points,
 }: Readonly<GetStudyDto>) {
   const reactions = useMemo(generateRandomReactions, []);
   const isImgBg = IMG_BACKGROUNDS.includes(background as ImgBgType);
@@ -64,7 +66,16 @@ export default function StudyCard({
             <span className={CLASSES.nickname}>{nickname}</span>
             {` 의 ${name}`}
           </h3>
-          <div>포인트 획득</div>
+          <div>
+            <IconTag
+              variant='point'
+              parentComponent='card'
+              fillColor={isImgBg ? 'black' : 'white'}
+              backgroundType={isImgBg ? 'image' : 'color'}
+              icon={PointIcon}
+              text={`${points}P 획득`}
+            />
+          </div>
         </div>
         <div>
           <p className={CLASSES.duration}>{duration} 째 진행중</p>

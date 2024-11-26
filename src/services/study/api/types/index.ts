@@ -25,7 +25,7 @@ export type GetStudyDto = {
 
 export interface DropdownOption {
   label: string;
-  orderBy: string;
+  orderBy: 'createdAt' | 'points';
   order: 'asc' | 'desc';
 }
 export interface StudyCardListProps {

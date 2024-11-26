@@ -1,9 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-
 import { Study } from '..';
-
 import type { DropdownOption } from '../controls/StudySortDropdown';
 
 const CLASSES = {
@@ -31,6 +29,7 @@ export default function StudyListContainer({
   const [selectedSortOpt, setSelectedSortOpt] = useState<DropdownOption>(
     SORT_OPTIONS[0],
   );
+  // const [page, setPage] = useState(1);
 
   return (
     <div className={CLASSES.container}>
