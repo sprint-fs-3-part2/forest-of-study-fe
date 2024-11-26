@@ -108,7 +108,7 @@ const CreateStudyPage = () => {
     try {
       // 클라이언트 측 유효성 검사
       if (!validateForm()) {
-        alert('유효성 검사 실패');
+        console.log('유효성 검사 실패');
         return;
       }
       // passwordConfirm 제외하고 서버로 데이터 전송
