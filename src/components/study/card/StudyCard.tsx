@@ -62,7 +62,7 @@ export default function StudyCard({
     <article className={CLASSES.container}>
       <section>
         <div className='flex justify-between max-w-full'>
-          <h3 className='heading-3 line-clamp-1 overflow-hidden whitespace-nowrap text-ellipsis max-w-[50%]'>
+          <h3 className='heading-3 line-clamp-1 text-ellipsis '>
             <span className={CLASSES.nickname}>{nickname}</span>
             {` 의 ${name}`}
           </h3>
@@ -84,9 +84,7 @@ export default function StudyCard({
       </section>
 
       <section>
-        <p className='lead line-clamp-2 overflow-hidden whitespace-nowrap text-ellipsis'>
-          {intro}
-        </p>
+        <p className='lead line-clamp-2 text-ellipsis'>{intro}</p>
       </section>
 
       <section className='flex gap-[5px] md:pt-6'>

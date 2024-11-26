@@ -17,8 +17,16 @@ const CLASSES = {
   ].join(' '),
 } as const;
 
+const querySamples = [
+  { page: 1, take: 6 },
+  { page: 1, take: 12 },
+  { page: 1, take: 18 },
+];
+
+const getRandomNumber = () => Math.floor(Math.random() * 3) + 1;
+
 async function ExplorerStudyGrid() {
-  const studies = await fetchStudies();
+  const studies = await fetchStudies(querySamples[getRandomNumber()]);
   return <Study.Grid studies={studies} />;
 }
 

@@ -8,7 +8,8 @@ const CLASSES = {
   container: 'flex flex-col gap-6',
   controlsWrapper: 'flex justify-between flex-col sm:flex-row',
   loadMoreWrapper: 'pt-9 grid grid-cols-3',
-  loadMoreButton: 'outlined text-green-text col-start-2 font-medium',
+  loadMoreButton:
+    'outlined text-green-text col-start-2 font-medium text-center',
 } as const;
 
 const SORT_OPTIONS: DropdownOption[] = [
@@ -29,7 +30,6 @@ export default function StudyListContainer({
   const [selectedSortOpt, setSelectedSortOpt] = useState<DropdownOption>(
     SORT_OPTIONS[0],
   );
-  // const [page, setPage] = useState(1);
 
   return (
     <div className={CLASSES.container}>
@@ -52,12 +52,9 @@ export default function StudyListContainer({
       {children}
 
       <div className={CLASSES.loadMoreWrapper}>
-        <button
-          type='button'
-          className={CLASSES.loadMoreButton}
-        >
-          더보기
-        </button>
+        <form className={CLASSES.loadMoreButton}>
+          <button type='submit'>더보기</button>
+        </form>
       </div>
     </div>
   );
