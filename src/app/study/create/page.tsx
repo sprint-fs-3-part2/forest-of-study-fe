@@ -5,85 +5,211 @@ import BasicInput from '@/components/form/BasicInput';
 import BgSelector from '@/components/form/BgSelector';
 import PasswordInput, { PasswordType } from '@/components/form/PasswordInput';
 import Textarea from '@/components/form/Textarea';
+import { TITLE_FONT } from '@/constants/createStudyStyle';
+import { axiosInstance } from '@/lib/axios/axiosInstance';
 import cn from '@/lib/cn';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-
-const TITLE_FONT =
-  'text-[16px] md:text-[24px] xl:text-[24px] font-extrabold text-black';
-export const INPUT_LAYOUT = 'w-full';
-export const INPUT_FONT =
-  'text-[16px] md:text-[18px] xl:text-[18px] text-black';
-export const BORDER =
-  'rounded-2xl border focus:ring-0 ring-0 outline-0 boder-black/10 hover:border-black/20';
 
 type FormData = {
   nickname: string;
-  studyName: string;
+  name: string;
   intro: string;
   background: string;
   password: string;
   passwordConfirm: string;
 };
 
+type ErrorState = {
+  nicknameError: string;
+  nameError: string;
+  introError: string;
+  backgroundError: string;
+  passwordError: string;
+  passwordConfirmError: string;
+};
+
 const CreateStudyPage = () => {
   const [formData, setFormData] = useState<FormData>({
     nickname: '',
-    studyName: '',
+    name: '',
     intro: '',
     background: '',
     password: '',
     passwordConfirm: '',
   });
+
+  const [error, setError] = useState<ErrorState>({
+    nicknameError: '',
+    nameError: '',
+    introError: '',
+    backgroundError: '',
+    passwordError: '',
+    passwordConfirmError: '',
+  });
+
+  const router = useRouter();
+
+  const validateForm = () => {
+    const newErrors: ErrorState = {
+      nicknameError: '',
+      nameError: '',
+      introError: '',
+      backgroundError: '',
+      passwordError: '',
+      passwordConfirmError: '',
+    };
+
+    let isValid = true;
+
+    if (!formData.nickname) {
+      newErrors.nicknameError = '닉네임을 입력해주세요';
+      isValid = false;
+    }
+    if (!formData.name) {
+      newErrors.nameError = '스터디 이름을 입력해주세요';
+      isValid = false;
+    }
+    if (!formData.intro) {
+      newErrors.introError = '소개를 입력해주세요';
+      isValid = false;
+    }
+    if (!formData.background) {
+      newErrors.backgroundError = '배경을 선택해주세요';
+      isValid = false;
+    }
+    if (!formData.password) {
+      newErrors.passwordError = '비밀번호를 입력해주세요';
+      isValid = false;
+    }
+    if (!formData.passwordConfirm) {
+      newErrors.passwordConfirmError = '비밀번호 확인을 입력해주세요';
+      isValid = false;
+    }
+
+    setError(newErrors);
+    console.log(newErrors);
+    return isValid;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError({
+      nicknameError: '',
+      nameError: '',
+      introError: '',
+      backgroundError: '',
+      passwordError: '',
+      passwordConfirmError: '',
+    });
+
+    try {
+      // 클라이언트 측 유효성 검사
+      if (!validateForm()) {
+        console.log('유효성 검사 실패');
+        return;
+      }
+      // passwordConfirm 제외하고 서버로 데이터 전송
+      const { passwordConfirm: _passwordConfirm, ...submitData } = formData;
+      const response = await axiosInstance.post('/studies', submitData);
+      console.log(response);
+      // 성공 시 해당 스터디 페이지로 이동
+      router.push(`/studies/${response.data.id}`);
+    } catch (err) {
+      console.log(err);
+      setError((prev) => ({
+        ...prev,
+        nicknameError:
+          err instanceof Error ? err.message : '알 수 없는 오류가 발생했습니다',
+      }));
+    }
+  };
+
+  const validatePassword = (password: string, passwordConfirm: string) => {
+    if (password !== passwordConfirm) {
+      setError((prev) => ({
+        ...prev,
+        passwordConfirmError: '비밀번호가 일치하지 않습니다.',
+      }));
+    } else {
+      setError((prev) => ({
+        ...prev,
+        passwordConfirmError: '',
+      }));
+    }
+  };
+
   return (
-    <form
-      id='createStudy'
-      action='/studies'
-      method='POST'
-    >
-      <h2 className={cn(TITLE_FONT)}>스터디 만들기</h2>
-      <BasicInput
-        id='nickname'
-        title='닉네임'
-        type='text'
-        value={formData.nickname}
-        onChange={(e) => setFormData({ ...formData, nickname: e.target.value })}
-      />
-      <BasicInput
-        id='studyName'
-        title='스터디 이름'
-        type='text'
-        value={formData.studyName}
-        onChange={(e) =>
-          setFormData({ ...formData, studyName: e.target.value })
-        }
-      />
-      <Textarea
-        id='intro'
-        value={formData.intro}
-        onChange={(e) => setFormData({ ...formData, intro: e.target.value })}
-      ></Textarea>
-      <BgSelector title='배경을 선택해주세요' />
-      <PasswordInput
-        id={PasswordType.PASSWORD}
-        title='비밀번호'
-        isConfirm={false}
-        value={formData.password}
-        onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-      />
-      <PasswordInput
-        id={PasswordType.PASSWORD_CONFIRM}
-        title='비밀번호 확인'
-        isConfirm={true}
-        value={formData.passwordConfirm}
-        onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-      />
-      <CommonBtn
-        widthType={'full'}
-        heightType={'fixed'}
+    <div>
+      <form
+        id='createStudy'
+        onSubmit={handleSubmit}
       >
-        만들기
-      </CommonBtn>
-    </form>
+        <h2 className={cn(TITLE_FONT)}>스터디 만들기</h2>
+        <BasicInput
+          id='nickname'
+          title='닉네임'
+          type='text'
+          value={formData.nickname}
+          onChange={(e) =>
+            setFormData({ ...formData, nickname: e.target.value })
+          }
+          error={error.nicknameError}
+        />
+        <BasicInput
+          id='name'
+          title='스터디 이름'
+          type='text'
+          value={formData.name}
+          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          error={error.nameError}
+        />
+        <Textarea
+          id='intro'
+          value={formData.intro}
+          onChange={(e) => setFormData({ ...formData, intro: e.target.value })}
+          error={error.introError}
+        />
+        <BgSelector
+          title='배경을 선택해주세요'
+          value={formData.background}
+          onChange={(e) => setFormData({ ...formData, background: e })}
+        // error={error.backgroundError}
+        />
+        <PasswordInput
+          id={PasswordType.PASSWORD}
+          title='비밀번호'
+          isConfirm={false}
+          value={formData.password}
+          onChange={(e) => {
+            setFormData({ ...formData, password: e });
+            validatePassword(e, formData.passwordConfirm);
+          }}
+          error={error.passwordError}
+        />
+        <PasswordInput
+          id={PasswordType.PASSWORD_CONFIRM}
+          title='비밀번호 확인'
+          isConfirm={true}
+          value={formData.passwordConfirm}
+          onChange={(e) => {
+            setFormData({ ...formData, passwordConfirm: e });
+            validatePassword(e, formData.password);
+          }}
+          error={error.passwordConfirmError}
+        />
+        <CommonBtn
+          widthType={'full'}
+          heightType={'fixed'}
+          className={cn('mt-10')}
+          type='submit'
+          onSubmit={handleSubmit}
+          // onClick={() => handleSubmit}
+        >
+          만들기
+        </CommonBtn>
+      </form>
+    </div>
   );
 };
 
