@@ -39,6 +39,7 @@ const TimerContainer = ({ onPointsUpdate }: TimerContainerProps) => {
         <TimerTitle
           sessionTimeInSeconds={testSessionTimeInSeconds}
           secondsLeft={secondsLeft}
+          minutesPerSession={minutesPerSession}
         />
         <TimerDisplay
           secondsLeft={secondsLeft}
