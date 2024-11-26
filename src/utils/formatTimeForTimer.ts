@@ -18,8 +18,8 @@ export const formatTimeForTimer = (minutes: number, seconds: number) => {
   // 타이머 화면 표시 처리 (양수일 때 & 음수일 때)
   const formattedMinutes =
     absMinutes < 10
-      ? `${minutes < 0 ? '-' : ''}0${absMinutes}`
-      : absMinutes.toString();
+      ? `${normalizedMinutes < 0 ? '-' : ''}0${absMinutes}`
+      : normalizedMinutes.toString();
   const formattedSeconds =
     absSeconds < 10 ? `0${absSeconds}` : absSeconds.toString();
 
