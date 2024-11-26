@@ -12,4 +12,4 @@ export interface HabitRecord {
   text: string; // 습관 내용
   days: boolean[];
   // days: [boolean, boolean, boolean, boolean, boolean, boolean, boolean];
-  }
+}

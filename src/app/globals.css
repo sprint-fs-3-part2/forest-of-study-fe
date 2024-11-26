@@ -72,13 +72,39 @@ body {
   .heading-2 {
     @apply font-extrabold text-2xl text-black;
   }
+  .heading-3 {
+    @apply font-bold text-lg text-black;
+  }
+  .lead {
+    @apply font-normal text-base text-black;
+  }
+  .caption-sm {
+    @apply font-normal text-sm text-gray;
+  }
   .caption-base {
     @apply font-medium text-xl text-gray;
   }
   .base-container {
-    @apply bg-white rounded-[20px] p-10;
+    @apply bg-white rounded p-10;
   }
   .outlined {
     @apply border border-gray-light rounded-[15px] text-base font-normal text-black placeholder:text-gray px-5 py-3;
+  }
+
+  .habit-grid {
+    display: grid;
+    grid-template-columns: minmax(122px, 1fr) repeat(7, 1fr);
+  }
+
+  @media (min-width: 744px) {
+    .habit-grid {
+      grid-template-columns: minmax(152px, 1fr) repeat(7, 1fr);
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .habit-grid {
+      grid-template-columns: minmax(246px, 1fr) repeat(7, 1fr);
+    }
   }
 }

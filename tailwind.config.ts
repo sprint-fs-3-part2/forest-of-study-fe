@@ -57,6 +57,26 @@ const config: Config = {
           DEFAULT: 'var(--pink)',
           text: 'var(--pink-text)',
         },
+        habit : {
+          1 : '#d2e869',
+          2 : '#b2d570',
+          3 : '#99c08e',
+          4 : '#97cfd8',
+          5 : '#89d5c9',
+          6 : '#4cdd84',
+          7 : '#73e8f2',
+          8 : '#06c0e1',
+          9 : '#0189be',
+          10 : '#c7a8da',
+          11 : '#c589de',
+          12 : '#cd69a7',
+          13 : '#FDE3A6',
+          14 : '#FED054',
+          15:  '#FF9E01',
+          16 : '#FFA3A5',
+          17 : '#F885A7',
+          18 : '#E26575',
+        }
       },
       screens: {
         sm: '375px',
@@ -71,5 +91,8 @@ const config: Config = {
     },
   },
   plugins: [require('@tailwindcss/forms')],
+  safelist:[ {
+    pattern : /^bg-habit-/,
+  } ]
 };
 export default config;
