@@ -12,7 +12,7 @@ const SEARCH_INPUT_CLASSES = {
   input: 'outlined pl-12 leading-none max-h-10 w-full',
 };
 
-export default function SearchInput({
+export default function StudySearchInput({
   name,
   value,
   onChange,

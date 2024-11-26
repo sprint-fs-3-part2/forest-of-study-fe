@@ -1,6 +1,4 @@
-import { patchFocusPoint } from '@/services/focus/api/focusApi';
 import { formatTimeForTimer } from '@/utils/formatTimeForTimer';
-import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
 type TimerReturnType = {
@@ -16,10 +14,15 @@ type TimerReturnType = {
   finish: () => void; // 타이머 완료(포인트 획득 요청 및 초기화)
 };
 
-const useTimer = (initialTime: number): TimerReturnType => {
-  const pathname = usePathname();
-  const studyId = pathname.split('/')[2];
+type TimerProps = {
+  initialTime: number;
+  onPointsUpdate: (points: number) => void;
+};
 
+const useTimer = ({
+  initialTime,
+  onPointsUpdate,
+}: TimerProps): TimerReturnType => {
   if (initialTime < 0) {
     throw new Error('초기 시간은 0보다 작을 수 없습니다.');
   }
@@ -62,28 +65,27 @@ const useTimer = (initialTime: number): TimerReturnType => {
 
   // 타이머 완료 버튼 클릭 시 초기화
   const finish = async () => {
-    // 합산 포인트 요청
-    const passedTime = initialTime - secondsLeftRef.current;
-    const oneMinute = 60;
-    const tenMinutes = oneMinute * 10;
-    const tenMinutesGetPoint = Math.floor(passedTime / tenMinutes);
-    const finishPoint = 3;
-    const totalPoint = tenMinutesGetPoint * finishPoint;
-    setPoint(totalPoint);
+    // 합산 포인트 계산
+    const elapsedTime = initialTime - secondsLeftRef.current; // 경과 시간
+    const secondsPerMinute = 60;
+    const secondsPerTenMinutes = secondsPerMinute * 10;
+    const bonusPerTenMinutes = 1; // 10분당 1포인트
+    const completionBonus = 3; // 완수 보너스 3포인트
 
-    try {
-      await patchFocusPoint(studyId, totalPoint);
+    const bonusPoints =
+      Math.floor(elapsedTime / secondsPerTenMinutes) * bonusPerTenMinutes;
+    const finalPoints = bonusPoints + completionBonus;
 
-      // 알림창 표시
-      setGetPointShowNotification(true);
-      // 5초 후 알림창 숨김
-      hideNotificationTimeout = setTimeout(() => {
-        setGetPointShowNotification(false);
-      }, 5000);
-    } catch (error) {
-      console.error('포인트 업데이트 실패:', error);
+    setPoint(finalPoints);
+
+    onPointsUpdate(finalPoints); // 상위 컴포넌트에 포인트 업데이트 요청
+
+    // 알림창 표시
+    setGetPointShowNotification(true);
+    // 5초 후 알림창 숨김
+    hideNotificationTimeout = setTimeout(() => {
       setGetPointShowNotification(false);
-    }
+    }, 5000);
 
     // 타이머 초기화
     reset();

@@ -12,8 +12,13 @@ import TimerNotification from './TimerNotification';
 const minutesPerSession = 25; // 25분
 const secondsInMinute = 60;
 const sessionTimeInSeconds = minutesPerSession * secondsInMinute; // 25분을 초로 변환
+const testSessionTimeInSeconds = 10; // 테스트용 10초
 
-const TimerContainer = () => {
+type TimerContainerProps = {
+  onPointsUpdate: (points: number) => void;
+};
+
+const TimerContainer = ({ onPointsUpdate }: TimerContainerProps) => {
   const {
     secondsLeft,
     isPaused,
@@ -25,16 +30,16 @@ const TimerContainer = () => {
     pause,
     reset,
     finish,
-  } = useTimer(sessionTimeInSeconds);
+  } = useTimer({ initialTime: testSessionTimeInSeconds, onPointsUpdate });
 
   return (
     <>
       <div className='border border-gray-light rounded-[20px] flex flex-col justify-evenly items-center h-[546px] max-md:h-[510px] max-sm:h-[358px]'>
         {/* 타이머 제목 */}
         <TimerTitle
-          minutesPerSession={minutesPerSession}
-          sessionTimeInSeconds={sessionTimeInSeconds}
+          sessionTimeInSeconds={testSessionTimeInSeconds}
           secondsLeft={secondsLeft}
+          minutesPerSession={minutesPerSession}
         />
         <TimerDisplay
           secondsLeft={secondsLeft}
@@ -44,7 +49,7 @@ const TimerContainer = () => {
 
         {/* 타이머 관련 버튼 */}
         <TimerButton
-          sessionTimeInSeconds={sessionTimeInSeconds}
+          sessionTimeInSeconds={testSessionTimeInSeconds}
           secondsLeft={secondsLeft}
           isPaused={isPaused}
           start={start}
@@ -55,7 +60,7 @@ const TimerContainer = () => {
 
         {/* 타이머 관련 알림 (멈춤, 포인트 획득) */}
         <TimerNotification
-          sessionTimeInSeconds={sessionTimeInSeconds}
+          sessionTimeInSeconds={testSessionTimeInSeconds}
           secondsLeft={secondsLeft}
           isPaused={isPaused}
           point={point}

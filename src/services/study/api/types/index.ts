@@ -1,8 +1,17 @@
-export type ColorBgType = 'green' | 'yellow' | 'blue' | 'pink';
+import { ReactNode } from 'react';
 
+export type ColorBgType = 'blue' | 'pink' | 'green' | 'yellow';
 export type ImgBgType = 'wall' | 'desk' | 'laptop' | 'plant';
 
 export type BgType = ColorBgType | ImgBgType;
+
+export type StudyQueryType = {
+  page?: number;
+  skip?: number;
+  take?: number;
+  orderBy?: 'createdAt' | 'points';
+  order?: 'asc' | 'desc';
+};
 
 export type GetStudyDto = {
   id: string;
@@ -10,8 +19,15 @@ export type GetStudyDto = {
   nickname: string;
   intro: string;
   background: BgType;
-  password: string;
-  createdAt: Date;
+  createdAt: string;
   points: number;
-  updatedAt?: Date;
 };
+
+export interface DropdownOption {
+  label: string;
+  orderBy: 'createdAt' | 'points';
+  order: 'asc' | 'desc';
+}
+export interface StudyCardListProps {
+  children: ReactNode;
+}

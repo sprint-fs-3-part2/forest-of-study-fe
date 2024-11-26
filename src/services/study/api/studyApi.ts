@@ -1,8 +1,10 @@
 import { axiosInstance } from '@/lib/axios/axiosInstance';
 import { GetStudyDto } from './types';
 
-export const getStudies = async () => {
-  const { data } = await axiosInstance.get('/studies');
+import type { StudyQueryType } from './types';
+
+export const getStudies = async (query?: StudyQueryType) => {
+  const { data } = await axiosInstance.get('/studies', { params: query });
   return data;
 };
 

@@ -1,11 +1,12 @@
-import RecentStudyBoard from '@/components/study/RecentStudyBoard';
-import StudyExplorerBoard from '@/components/study/StudyExplorerBoard';
+import { Study } from '@/components/study';
+
+export const dynamic = 'force-dynamic';
 
 export default function Home() {
   return (
-    <div className='gap-6 grid pb-44'>
-      <RecentStudyBoard />
-      <StudyExplorerBoard />
+    <div className='gap-6 grid pb-44 scroll-smooth'>
+      <Study.Recent />
+      <Study.Explorer />
     </div>
   );
 }
