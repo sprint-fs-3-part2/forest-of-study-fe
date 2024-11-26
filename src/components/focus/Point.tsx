@@ -9,8 +9,11 @@ import { IconTag } from '@/components/common/IconTag';
 /* 아이콘 */
 import pointIcon from '@/public/icons/point_icon.png';
 
-const Point = () => {
-  const point = 310;
+type PointProps = {
+  points: number;
+};
+
+const Point = ({ points }: PointProps) => {
   return (
     <div className='mb-6'>
       <p className='text-gray mb-2'>현재까지 획득한 포인트</p>
@@ -19,7 +22,7 @@ const Point = () => {
         parentComponent='page'
         fillColor='white'
         icon={pointIcon}
-        text={`${point}P 획득`}
+        text={`${points}P 획득`}
       />
     </div>
   );

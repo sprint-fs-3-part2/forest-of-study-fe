@@ -1,21 +1,41 @@
+'use client';
+
 import { StudyNav } from '@/components/common/StudyNav';
-import * as FocusToday from './index';
+import * as FocusToday from '@/components/focus/index';
+import { getStudyById } from '@/services/study/api/studyApi';
+import { GetStudyDto } from '@/services/study/api/types';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 const FocusTodayPage = () => {
+  const params = usePathname();
+  const id = params.split('/')[2];
+
+  const [study, setStudy] = useState<GetStudyDto>();
+
+  useEffect(() => {
+    if (!id) return;
+
+    const getStudy = async () => {
+      const data = await getStudyById(id);
+      setStudy(data);
+    };
+    getStudy();
+  }, [id]);
+
+  if (!study) return null;
+
+  const { nickname, name, points } = study;
+
   return (
-    // <div className='w-full h-screen pt-5 px-6'>
-    //   <main className='bg-white max-w-[1248px] max-h-[774px] mx-auto rounded-[20px] p-10 md:p-6 sm:p-4 max-sm:p-4'>
     <>
-      {/* <FocusToday.Header /> */}
       <StudyNav
-        nickname='연우'
-        studyName='개발공장'
+        nickname={nickname}
+        studyName={name}
       />
-      <FocusToday.Point />
-      <FocusToday.Timer />
+      <FocusToday.Point points={points} />
+      <FocusToday.TimerContainer />
     </>
-    // </main>
-    // </div>
   );
 };
 
