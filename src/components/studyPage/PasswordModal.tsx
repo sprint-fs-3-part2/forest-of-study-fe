@@ -6,6 +6,7 @@ import { FormEvent, useState } from 'react';
 import { checkPassword } from '@/services/password/api/passwordApi';
 import { Toast } from '../common/Toast/Toast';
 import useScreenWidth from '@/hooks/useScreenWidth';
+import { deleteStudy } from '@/services/study/api/studyApi';
 
 export function PasswordModalContent({
   nickname,
@@ -36,7 +37,8 @@ export function PasswordModalContent({
     e.preventDefault();
     setShowToast(false);
     const result = await check(password);
-    if (result === true) return variant && router.push(DESTINATION[variant]);
+    if (variant === 'delete') await deleteStudy(studyId);
+    result && variant && router.push(DESTINATION[variant]);
     !result && setShowToast(true);
   };
 
