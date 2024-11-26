@@ -12,5 +12,6 @@ export type GetStudyDto = {
   background: BgType;
   password: string;
   createdAt: Date;
+  points: number;
   updatedAt?: Date;
 };

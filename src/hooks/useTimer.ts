@@ -1,4 +1,6 @@
+import { patchFocusPoint } from '@/services/focus/api/focusApi';
 import { formatTimeForTimer } from '@/utils/formatTimeForTimer';
+import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
 type TimerReturnType = {
@@ -15,6 +17,9 @@ type TimerReturnType = {
 };
 
 const useTimer = (initialTime: number): TimerReturnType => {
+  const pathname = usePathname();
+  const studyId = pathname.split('/')[2];
+
   if (initialTime < 0) {
     throw new Error('초기 시간은 0보다 작을 수 없습니다.');
   }
@@ -56,7 +61,7 @@ const useTimer = (initialTime: number): TimerReturnType => {
   };
 
   // 타이머 완료 버튼 클릭 시 초기화
-  const finish = () => {
+  const finish = async () => {
     // 합산 포인트 요청
     const passedTime = initialTime - secondsLeftRef.current;
     const oneMinute = 60;
@@ -66,13 +71,19 @@ const useTimer = (initialTime: number): TimerReturnType => {
     const totalPoint = tenMinutesGetPoint * finishPoint;
     setPoint(totalPoint);
 
-    // 알림창 표시
-    setGetPointShowNotification(true);
+    try {
+      await patchFocusPoint(studyId, totalPoint);
 
-    // 3초 후 알림창 숨김
-    hideNotificationTimeout = setTimeout(() => {
+      // 알림창 표시
+      setGetPointShowNotification(true);
+      // 5초 후 알림창 숨김
+      hideNotificationTimeout = setTimeout(() => {
+        setGetPointShowNotification(false);
+      }, 5000);
+    } catch (error) {
+      console.error('포인트 업데이트 실패:', error);
       setGetPointShowNotification(false);
-    }, 3000);
+    }
 
     // 타이머 초기화
     reset();
