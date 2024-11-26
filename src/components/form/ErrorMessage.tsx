@@ -10,6 +10,7 @@ const ErrorMessage = ({ id, error }: ErrorMessageProps) => {
     <p
       key={id}
       className={ERROR_FONT}
+      style={{ color: '#c41013' }}
     >
       *{error}
     </p>

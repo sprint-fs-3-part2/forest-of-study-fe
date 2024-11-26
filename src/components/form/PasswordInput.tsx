@@ -42,7 +42,6 @@ const PasswordInput = ({
         onChange={(e) => onChange && onChange(e.target.value)}
         aria-invalid={error ? 'true' : 'false'}
         aria-describedby={error ? `${id}-error` : undefined}
-        autoComplete={isConfirm ? 'new-password' : 'current-password'}
       />
       <div>
         {error && (

@@ -34,7 +34,11 @@ const BgSelector = ({
   return (
     <div>
       <FormLabel target='background'>{title}</FormLabel>
-      <div className={cn('grid grid-cols-4 gap-4')}>
+      <div
+        className={cn(
+          'grid gap-4 xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 justify-center place-items-center',
+        )}
+      >
         {Object.entries(BackgroundImages).map(([key, value]) => (
           <button
             id={key}
