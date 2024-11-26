@@ -1,6 +1,4 @@
-import { patchFocusPoint } from '@/services/focus/api/focusApi';
 import { formatTimeForTimer } from '@/utils/formatTimeForTimer';
-import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
 type TimerReturnType = {
@@ -16,16 +14,21 @@ type TimerReturnType = {
   finish: () => void; // 타이머 완료(포인트 획득 요청 및 초기화)
 };
 
-const useTimer = (initialTime: number): TimerReturnType => {
-  const pathname = usePathname();
-  const studyId = pathname.split('/')[2];
+type TimerProps = {
+  initialTime: number;
+  onPointsUpdate: (points: number) => void;
+};
 
+const useTimer = ({
+  initialTime,
+  onPointsUpdate,
+}: TimerProps): TimerReturnType => {
   if (initialTime < 0) {
     throw new Error('초기 시간은 0보다 작을 수 없습니다.');
   }
 
   const [isPaused, setIsPaused] = useState<boolean>(true); // 일시정지 상태
-  const [secondsLeft, setSecondsLeft] = useState<number>(initialTime); // 남은 시간
+  const [secondsLeft, setSecondsLeft] = useState<number>(10); // 남은 시간
   const [showGetPointNotification, setGetPointShowNotification] =
     useState<boolean>(false); // 포인트 획득 알림창 표시 여부
   const [point, setPoint] = useState<number>(0);
@@ -71,19 +74,14 @@ const useTimer = (initialTime: number): TimerReturnType => {
     const totalPoint = tenMinutesGetPoint * finishPoint;
     setPoint(totalPoint);
 
-    try {
-      await patchFocusPoint(studyId, totalPoint);
+    onPointsUpdate(totalPoint); // 상위 컴포넌트에 포인트 업데이트 요청
 
-      // 알림창 표시
-      setGetPointShowNotification(true);
-      // 5초 후 알림창 숨김
-      hideNotificationTimeout = setTimeout(() => {
-        setGetPointShowNotification(false);
-      }, 5000);
-    } catch (error) {
-      console.error('포인트 업데이트 실패:', error);
+    // 알림창 표시
+    setGetPointShowNotification(true);
+    // 5초 후 알림창 숨김
+    hideNotificationTimeout = setTimeout(() => {
       setGetPointShowNotification(false);
-    }
+    }, 5000);
 
     // 타이머 초기화
     reset();
@@ -93,7 +91,7 @@ const useTimer = (initialTime: number): TimerReturnType => {
     const interval = setInterval(() => {
       if (isPausedRef.current) return;
       tick();
-    }, 1000);
+    }, 10);
 
     return () => {
       clearInterval(interval);
