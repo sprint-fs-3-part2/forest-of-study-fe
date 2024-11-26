@@ -5,7 +5,7 @@ import type { GetStudyDto } from '@/services/study/api/types';
 import StudyCard from './card/StudyCard';
 import StudySearchInput from './controls/StudySearchInput';
 import StudySortDropdown from './controls/StudySortDropdown';
-import StudyGrid from './layout/StudyGrid';
+import { StudyGrid } from './layout/StudyGrid';
 import StudyGridSkeleton from './layout/StudyGridSkeleton';
 import StudyListContainer from './layout/StudyListContainer';
 import RecentStudy from './page/RecentStudy';
