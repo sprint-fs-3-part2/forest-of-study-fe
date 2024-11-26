@@ -100,7 +100,7 @@ export default function StudyCard({
         <p className='lead line-clamp-2 text-ellipsis'>{intro}</p>
       </section>
 
-      <section className='flex gap-[5px] md:pt-6'>
+      <section className='flex gap-[5px] md:pt-6 items-center'>
         {reactions.map((reaction) => (
           <IconTag
             key={reaction.emoji}
