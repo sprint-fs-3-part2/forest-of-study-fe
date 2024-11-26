@@ -45,10 +45,18 @@ export default function StudyPage() {
   const [habit, setHabit] = useState<StudyHabitsResponseDto>();
   const [displayModal, setDisplayModal] = useState(false);
   const [modalVariant, setModalVariant] = useState<PasswordModalVariant>();
+  const [emoji, setEmoji] = useState(mockReaction);
 
   const openModal = (variant: PasswordModalVariant) => {
     setModalVariant(variant);
     setDisplayModal(true);
+  };
+
+  const handleReaction = (reaction: string) => {
+    setEmoji((prev) => ({
+      ...prev,
+      [reaction]: (prev[reaction] || 0) + 1,
+    }));
   };
 
   const onCloseModal = () => {
@@ -86,7 +94,10 @@ export default function StudyPage() {
       </Modal>
       <div className='h-[889px]'>
         <div className='flex flex-wrap-reverse justify-between items-center mb-[24px] relative gap-y-4'>
-          <Reaction reactions={mockReaction} />
+          <Reaction
+            reactions={emoji}
+            addReaction={handleReaction}
+          />
           <Actions setVariant={openModal} />
         </div>
         {study && (

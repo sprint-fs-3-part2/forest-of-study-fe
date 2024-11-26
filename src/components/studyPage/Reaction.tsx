@@ -42,14 +42,19 @@ const MoreReactions = ({ reactions, displayMore }: MoreReactionProps) => {
   );
 };
 
-export function Reaction({ reactions }: { reactions: ReactionsType }) {
+export function Reaction({
+  reactions,
+  addReaction,
+}: {
+  reactions: ReactionsType;
+  addReaction: (reaction: string) => void;
+}) {
   const reactionsEntry = Object.entries(reactions).sort((a, b) => b[1] - a[1]);
   const threeReactions = reactionsEntry.slice(0, 3);
   const restReactions = reactionsEntry.slice(4);
   const [showMoreReaction, setShowMoreReaction] = useState(false);
   const handleEmojiSelect = (emoji: string) => {
-    console.log('Selected emoji:', emoji);
-    // 여기서 선택된 이모지 처리
+    addReaction(emoji);
   };
 
   return (
