@@ -11,3 +11,7 @@ export const getStudyById = async (id: string) => {
   const { data } = await axiosInstance.get(`/studies/${id}`);
   return data;
 };
+
+export const deleteStudy = async (id: string) => {
+  await axiosInstance.delete(`/studies/${id}`);
+};

@@ -10,7 +10,7 @@ const FONT = 'text-[14px] md:text-[16px] xl:text-[16px] font-medium';
 
 const PADDING = 'px-[28px] py-[12px]';
 
-export function Toast({ variant, children }: ToastProps) {
+export function Toast({ variant, children, className }: ToastProps) {
   return (
     <div
       className={cn(
@@ -18,8 +18,10 @@ export function Toast({ variant, children }: ToastProps) {
         FONT,
         'rounded-xl',
         'flex items-center justify-center',
+        'whitespace-nowrap',
         PADDING,
         'w-fit',
+        className,
       )}
     >
       {children}

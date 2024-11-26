@@ -46,6 +46,7 @@ export function IconTag({
   text,
   icon,
   className,
+  onClick,
 }: IconTagProps) {
   if (parentComponent === 'card' && fillColor === 'black' && !backgroundType) {
     throw new Error(
@@ -88,6 +89,7 @@ export function IconTag({
 
   return (
     <div
+      onClick={onClick}
       className={cn(getStyleClasses())}
       role='note'
       aria-label={`${text}${typeof icon === 'string' ? ` ${icon}` : ''} 태그`}
