@@ -8,6 +8,24 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      borderRadius: {
+       DEFAULT: '20px',
+      },
+      aspectRatio: {
+        'card' : '358 / 243',
+        'card-md' : '312 / 243',
+        'card-sm' : '312 / 180',
+      },
+      backgroundImage: {
+        'study-green': " url('/image/green.webp')",
+        'study-yellow': "url('/image/yellow.webp')",
+        'study-blue': "url('/image/blue.webp')",
+        'study-pink': "url('/image/pink.webp')",
+        'study-laptop' : "url('/image/laptop.webp')",
+        'study-plant' : "url('/image/plant.webp')",
+        'study-desk' : "url('/image/desk.webp')",
+        'study-wall' : "url('/image/wall.webp')",
+      },
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
@@ -51,12 +69,12 @@ const config: Config = {
         xl: '1200px',
       },
       fontFamily: {
-        sans: ['var(--font-pretendard-variable)'],
+        sans: ['var(--font-pretendard-variable)', 'sans-serif'],
         pretendard: ['var(--font-pretendard-variable)'],
         jejudoldam: ['var(--font-jejudoldam)'],
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/forms')],
 };
 export default config;
