@@ -26,44 +26,39 @@ export default function StudyCard({
   const duration = useMemo(() => {
     return dayjs(createdAt).fromNow(true);
   }, [createdAt]);
+  const styles = {
+    container: cn(
+      'h-full grid rounded border-black-10 border p-[30px] gap-y-3 md:gap-y-[30px]',
+      { '[&_*]:text-white': isImgBg },
+    ),
+    nickname: cn(!isImgBg && nicknameClass[background]),
+    duration: 'caption-sm tabular-nums',
+  };
 
   return (
-    const styles = {
-      container: cn(
-        'h-full grid rounded border-black-10 border p-[30px] gap-y-3 md:gap-y-[30px]',
-        { '[&_*]:text-white': isImgBg }
-      ),
-      nickname: cn(!isImgBg && nicknameClass[background]),
-      duration: 'caption-sm tabular-nums'
-    };
+    <article className={styles.container}>
+      <section>
+        <div className='flex justify-between'>
+          <h3 className='heading-3'>
+            <span className={styles.nickname}>{nickname}</span>
+            {` 의 ${name}`}
+          </h3>
+          <div>포인트 획득</div>
+        </div>
+        <div>
+          <p className={styles.duration}>{duration} 째 진행중</p>
+        </div>
+      </section>
 
-    return (
-      <article className={styles.container}>
-        <section>
-          <div className='flex justify-between'></div>
-            <h3 className='heading-3'>
-              <span className={styles.nickname}>
-                {nickname}
-              </span>
-              {` 의 ${name}`}
-            </h3>
-            <div>포인트 획득</div>
-          </div>
-          <div>
-            <p className={styles.duration}>{duration} 째 진행중</p>
-          </div>
-        </section>
+      <section>
+        <p className='lead'>{intro}</p>
+      </section>
 
-        <section>
-          <p className='lead'>{intro}</p>
-        </section>
-
-        <section className='flex gap-[5px] md:pt-6'>
-          <div>1</div>
-          <div>2</div>
-          <div>3</div>
-        </section>
-      </article>
-    );
+      <section className='flex gap-[5px] md:pt-6'>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+      </section>
+    </article>
   );
 }
