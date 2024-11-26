@@ -90,4 +90,21 @@ body {
   .outlined {
     @apply border border-gray-light rounded-[15px] text-base font-normal text-black placeholder:text-gray px-5 py-3;
   }
+
+  .habit-grid {
+    display: grid;
+    grid-template-columns: minmax(122px, 1fr) repeat(7, 1fr);
+  }
+
+  @media (min-width: 744px) {
+    .habit-grid {
+      grid-template-columns: minmax(152px, 1fr) repeat(7, 1fr);
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .habit-grid {
+      grid-template-columns: minmax(246px, 1fr) repeat(7, 1fr);
+    }
+  }
 }
