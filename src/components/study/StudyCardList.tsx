@@ -2,6 +2,7 @@ import { GetStudyDto } from '@/services/study/api/types';
 import Link from 'next/link';
 import StudyCard from './StudyCard';
 import cn from '@/lib/cn';
+import Store from '@/utils/store';
 
 type BackgroundType =
   | 'blue'
@@ -27,6 +28,12 @@ const bgClass: Record<BackgroundType, string> = {
 export default function StudyCardList({
   studies,
 }: Readonly<{ studies: GetStudyDto[] }>) {
+  const onClick = (studyId: string) => {
+    const recentStudy = Store.getItem('recentStudy') ?? [];
+    const newRecentStudy = Array.from(new Set([studyId, ...recentStudy]));
+    Store.setItem('recentStudy', newRecentStudy);
+  };
+
   return (
     <div className='md:grid-cols-2 xl:grid-cols-3 place-content-center container grid grid-cols-1 gap-6 mx-auto'>
       {studies.length > 0 &&
@@ -34,6 +41,7 @@ export default function StudyCardList({
           <Link
             key={study.id}
             href={`/study/${study.id}`}
+            onClick={() => onClick(study.id)}
             className={cn(
               'w-full h-full bg-cover rounded bg-no-repeat bg-center min-h-[180px]',
               bgClass[study.background],

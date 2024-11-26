@@ -1,4 +1,5 @@
 import { axiosInstance } from '@/lib/axios/axiosInstance';
+import { GetStudyDto } from './types';
 
 export const getStudies = async () => {
   const { data } = await axiosInstance.get('/studies');
@@ -12,4 +13,11 @@ export const getStudyById = async (id: string) => {
 
 export const deleteStudy = async (id: string) => {
   await axiosInstance.delete(`/studies/${id}`);
+};
+
+export const getRecentStudy = async (ids: string[]) => {
+  const { data } = await axiosInstance.post<GetStudyDto[]>(`/studies/recent`, {
+    uuids: ids,
+  });
+  return data;
 };
