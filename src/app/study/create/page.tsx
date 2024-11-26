@@ -108,7 +108,7 @@ const CreateStudyPage = () => {
     try {
       // 클라이언트 측 유효성 검사
       if (!validateForm()) {
-        alert('유효성 검사 실패');
+        console.log('유효성 검사 실패');
         return;
       }
       // passwordConfirm 제외하고 서버로 데이터 전송
@@ -116,7 +116,7 @@ const CreateStudyPage = () => {
       const response = await axiosInstance.post('/studies', submitData);
       console.log(response);
       // 성공 시 해당 스터디 페이지로 이동
-      router.push(`/studies/${response.data.id}`);
+      router.push(`/study/${response.data.id}`);
     } catch (err) {
       console.log(err);
       setError((prev) => ({
