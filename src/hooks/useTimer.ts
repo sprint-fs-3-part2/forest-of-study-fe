@@ -95,7 +95,7 @@ const useTimer = ({
     const interval = setInterval(() => {
       if (isPausedRef.current) return;
       tick();
-    }, 10);
+    }, 1000);
 
     return () => {
       clearInterval(interval);
