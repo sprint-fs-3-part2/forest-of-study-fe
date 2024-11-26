@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   description: '공부의 숲에 오신걸 환영합니다.',
   icons: {
     icon: '/icon.ico',
-    sizes: 'any',
+    sizes: '16x16',
     type: 'image/x-icon',
   },
 };
