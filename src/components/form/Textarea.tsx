@@ -18,7 +18,8 @@ type TextareaProps = {
   placeholder?: string;
   maxLength?: number;
   rows?: number;
-  error: string | null;
+  error?: string | null;
+  required?: boolean;
 };
 
 const Textarea = ({
@@ -29,6 +30,7 @@ const Textarea = ({
   maxLength = 500,
   rows = 4,
   error,
+  required = true,
 }: TextareaProps) => {
   return (
     <>
@@ -43,11 +45,11 @@ const Textarea = ({
         className={cn(INPUT_LAYOUT, INPUT_FONT, BORDER)}
         value={value}
         onChange={onChange}
-        required
+        required={required}
       />
       {error && (
         <ErrorMessage
-          errorKey={id}
+          id={id}
           error={error}
         />
       )}

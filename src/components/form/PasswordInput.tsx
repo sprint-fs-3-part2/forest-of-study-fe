@@ -1,12 +1,7 @@
 'use client';
 
 import cn from '@/lib/cn';
-import {
-  BORDER,
-  ERROR_FONT,
-  INPUT_FONT,
-  INPUT_LAYOUT,
-} from '@/constants/createStudyStyle';
+import { BORDER, INPUT_FONT, INPUT_LAYOUT } from '@/constants/createStudyStyle';
 import FormLabel from './FormLabel';
 import ErrorMessage from './ErrorMessage';
 
@@ -45,14 +40,16 @@ const PasswordInput = ({
         className={cn(INPUT_LAYOUT, INPUT_FONT, BORDER)}
         value={value}
         onChange={(e) => onChange && onChange(e.target.value)}
+        aria-invalid={error ? 'true' : 'false'}
+        aria-describedby={error ? `${id}-error` : undefined}
+        autoComplete={isConfirm ? 'new-password' : 'current-password'}
       />
       <div>
         {error && (
           <ErrorMessage
+            id={`${id}-error`}
             key={id}
-            errorKey={id}
             error={error}
-            className={ERROR_FONT}
           />
         )}
       </div>

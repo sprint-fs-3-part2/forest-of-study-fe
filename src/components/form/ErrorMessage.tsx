@@ -1,15 +1,14 @@
 import { ERROR_FONT } from '@/constants/createStudyStyle';
 
 type ErrorMessageProps = {
-  errorKey: string;
+  id: string;
   error: string;
-  className?: string;
 };
 
-const ErrorMessage = ({ errorKey, error }: ErrorMessageProps) => {
+const ErrorMessage = ({ id, error }: ErrorMessageProps) => {
   return (
     <p
-      key={errorKey}
+      key={id}
       className={ERROR_FONT}
     >
       *{error}

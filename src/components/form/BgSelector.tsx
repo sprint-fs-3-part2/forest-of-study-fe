@@ -20,12 +20,16 @@ const BORDER = 'border border-black/10 rounded-2xl';
 
 interface BgSelectorProps {
   title: string;
-  value: string;
+  defaultValue?: string;
   onChange: (e: string) => void;
 }
 
-const BgSelector = ({ title, onChange }: BgSelectorProps) => {
-  const [selectedBg, setSelectedBg] = useState('');
+const BgSelector = ({
+  title,
+  onChange,
+  defaultValue = '',
+}: BgSelectorProps) => {
+  const [selectedBg, setSelectedBg] = useState(defaultValue);
 
   return (
     <div>
@@ -45,7 +49,6 @@ const BgSelector = ({ title, onChange }: BgSelectorProps) => {
             )}
             style={{ backgroundImage: `url(${value})` }}
             onClick={() => {
-              console.log(key);
               onChange(key);
               setSelectedBg(key);
             }}

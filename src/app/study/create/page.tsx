@@ -27,6 +27,7 @@ type ErrorState = {
   backgroundError: string;
   passwordError: string;
   passwordConfirmError: string;
+  generalError?: string;
 };
 
 const CreateStudyPage = () => {
@@ -46,6 +47,7 @@ const CreateStudyPage = () => {
     backgroundError: '',
     passwordError: '',
     passwordConfirmError: '',
+    generalError: '',
   });
 
   const router = useRouter();
@@ -119,7 +121,7 @@ const CreateStudyPage = () => {
       console.log(err);
       setError((prev) => ({
         ...prev,
-        nicknameError:
+        generalError:
           err instanceof Error ? err.message : '알 수 없는 오류가 발생했습니다',
       }));
     }
@@ -172,9 +174,9 @@ const CreateStudyPage = () => {
         />
         <BgSelector
           title='배경을 선택해주세요'
-          value={formData.background}
+          defaultValue={formData.background}
           onChange={(e) => setFormData({ ...formData, background: e })}
-        // error={error.backgroundError}
+          // error={error.backgroundError}
         />
         <PasswordInput
           id={PasswordType.PASSWORD}
@@ -182,8 +184,9 @@ const CreateStudyPage = () => {
           isConfirm={false}
           value={formData.password}
           onChange={(e) => {
-            setFormData({ ...formData, password: e });
-            validatePassword(e, formData.passwordConfirm);
+            const newPassword = e;
+            setFormData({ ...formData, password: newPassword });
+            validatePassword(newPassword, formData.passwordConfirm);
           }}
           error={error.passwordError}
         />
@@ -193,8 +196,9 @@ const CreateStudyPage = () => {
           isConfirm={true}
           value={formData.passwordConfirm}
           onChange={(e) => {
-            setFormData({ ...formData, passwordConfirm: e });
-            validatePassword(e, formData.password);
+            const newPasswordConfirm = e;
+            setFormData({ ...formData, passwordConfirm: newPasswordConfirm });
+            validatePassword(formData.password, newPasswordConfirm);
           }}
           error={error.passwordConfirmError}
         />
