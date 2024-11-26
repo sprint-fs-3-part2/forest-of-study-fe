@@ -1,19 +1,11 @@
-import { GetStudyDto } from '@/services/study/api/types';
 import Link from 'next/link';
-import StudyCard from './StudyCard';
+
 import cn from '@/lib/cn';
+import type { GetStudyDto, BgType } from '@/services/study/api/types';
 
-type BackgroundType =
-  | 'blue'
-  | 'pink'
-  | 'green'
-  | 'yellow'
-  | 'wall'
-  | 'desk'
-  | 'laptop'
-  | 'plant';
+import StudyCard from './StudyCard';
 
-const bgClass: Record<BackgroundType, string> = {
+const bgClass: Record<BgType, string> = {
   blue: 'bg-blue',
   pink: 'bg-pink',
   green: 'bg-green',
@@ -36,7 +28,7 @@ export default function StudyCardList({
             href={`/study/${study.id}`}
             className={cn(
               'w-full h-full bg-cover rounded bg-no-repeat bg-center min-h-[180px]',
-              bgClass[study.background],
+              bgClass[study.background as BgType],
             )}
           >
             <StudyCard {...study} />

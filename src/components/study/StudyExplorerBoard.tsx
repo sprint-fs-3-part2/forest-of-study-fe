@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 
 import type { GetStudyDto } from '@/services/study/api/types';
 import { fetchStudies } from '@/services/study/studyService';
+
 import Dropdown, { type DropdownOption } from './Dropdown';
 import SearchInput from './SearchInput';
 import StudyCardList from './StudyCardList';
@@ -30,7 +31,6 @@ export default function StudyExplorerBoard() {
   useEffect(() => {
     const loadStudies = async () => {
       const studies = await fetchStudies();
-
       setStudies(studies);
     };
 
