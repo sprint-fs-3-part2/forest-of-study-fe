@@ -13,7 +13,11 @@ const minutesPerSession = 25; // 25분
 const secondsInMinute = 60;
 const sessionTimeInSeconds = minutesPerSession * secondsInMinute; // 25분을 초로 변환
 
-const TimerContainer = () => {
+type TimerContainerProps = {
+  onPointsUpdate: (points: number) => void;
+};
+
+const TimerContainer = ({ onPointsUpdate }: TimerContainerProps) => {
   const {
     secondsLeft,
     isPaused,
@@ -25,7 +29,7 @@ const TimerContainer = () => {
     pause,
     reset,
     finish,
-  } = useTimer(sessionTimeInSeconds);
+  } = useTimer({ initialTime: sessionTimeInSeconds, onPointsUpdate });
 
   return (
     <>
