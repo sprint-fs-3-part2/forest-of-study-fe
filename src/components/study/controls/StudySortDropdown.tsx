@@ -22,7 +22,7 @@ type DropdownProps = {
   onChange: (option: DropdownOption) => void;
 };
 
-export default function Dropdown({
+export default function StudySortDropdown({
   selected,
   options,
   onChange,
