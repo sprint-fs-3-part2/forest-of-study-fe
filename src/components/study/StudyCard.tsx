@@ -28,36 +28,42 @@ export default function StudyCard({
   }, [createdAt]);
 
   return (
-    <article
-      className={cn(
+    const styles = {
+      container: cn(
         'h-full grid rounded border-black-10 border p-[30px] gap-y-3 md:gap-y-[30px]',
-        { '[&_*]:text-white': isImgBg },
-      )}
-    >
-      <section>
-        <div className='flex justify-between'>
-          <h3 className='heading-3'>
-            <span className={cn(!isImgBg && nicknameClass[background])}>
-              {nickname}
-            </span>
-            {` 의 ${name}`}
-          </h3>
-          <div>포인트 획득</div>
-        </div>
-        <div>
-          <p className='caption-sm tabular-nums'>{duration} 째 진행중</p>
-        </div>
-      </section>
+        { '[&_*]:text-white': isImgBg }
+      ),
+      nickname: cn(!isImgBg && nicknameClass[background]),
+      duration: 'caption-sm tabular-nums'
+    };
 
-      <section>
-        <p className='lead'>{intro}</p>
-      </section>
+    return (
+      <article className={styles.container}>
+        <section>
+          <div className='flex justify-between'></div>
+            <h3 className='heading-3'>
+              <span className={styles.nickname}>
+                {nickname}
+              </span>
+              {` 의 ${name}`}
+            </h3>
+            <div>포인트 획득</div>
+          </div>
+          <div>
+            <p className={styles.duration}>{duration} 째 진행중</p>
+          </div>
+        </section>
 
-      <section className='flex gap-[5px] md:pt-6'>
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-      </section>
-    </article>
+        <section>
+          <p className='lead'>{intro}</p>
+        </section>
+
+        <section className='flex gap-[5px] md:pt-6'>
+          <div>1</div>
+          <div>2</div>
+          <div>3</div>
+        </section>
+      </article>
+    );
   );
 }
