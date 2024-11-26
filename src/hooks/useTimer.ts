@@ -65,16 +65,20 @@ const useTimer = ({
 
   // 타이머 완료 버튼 클릭 시 초기화
   const finish = async () => {
-    // 합산 포인트 요청
-    const passedTime = initialTime - secondsLeftRef.current;
-    const oneMinute = 60;
-    const tenMinutes = oneMinute * 10;
-    const tenMinutesGetPoint = Math.floor(passedTime / tenMinutes);
-    const finishPoint = 3;
-    const totalPoint = tenMinutesGetPoint * finishPoint;
-    setPoint(totalPoint);
+    // 합산 포인트 계산
+    const elapsedTime = initialTime - secondsLeftRef.current; // 경과 시간
+    const secondsPerMinute = 60;
+    const secondsPerTenMinutes = secondsPerMinute * 10;
+    const bonusPerTenMinutes = 1; // 10분당 1포인트
+    const completionBonus = 3; // 완수 보너스 3포인트
 
-    onPointsUpdate(totalPoint); // 상위 컴포넌트에 포인트 업데이트 요청
+    const bonusPoints =
+      Math.floor(elapsedTime / secondsPerTenMinutes) * bonusPerTenMinutes;
+    const finalPoints = bonusPoints + completionBonus;
+
+    setPoint(finalPoints);
+
+    onPointsUpdate(finalPoints); // 상위 컴포넌트에 포인트 업데이트 요청
 
     // 알림창 표시
     setGetPointShowNotification(true);
