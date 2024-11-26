@@ -79,7 +79,7 @@ export default function RecentStudy() {
       setRecentStudies(data);
     };
     fetchRecentStudies();
-  }, [recentStudyIds]);
+  }, []);
 
   return (
     <section
