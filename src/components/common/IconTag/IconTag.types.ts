@@ -11,4 +11,5 @@ export interface IconTagProps {
     | { src: string; width: number; height: number }
     | string;
   className?: string;
+  onClick?: () => void;
 }
