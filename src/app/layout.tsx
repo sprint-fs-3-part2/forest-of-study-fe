@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import type { Metadata } from 'next';
+
 import localFont from 'next/font/local';
+
 import './globals.css';
+
 import { GNB } from '@/components/layout';
 
 const pretendard = localFont({
@@ -19,6 +22,15 @@ const jejudoldam = localFont({
 export const metadata: Metadata = {
   title: '공부의 숲',
   description: '공부의 숲에 오신걸 환영합니다.',
+  icons: {
+    icon: [
+      {
+        url: '/icon.ico',
+        sizes: '16x16',
+        type: 'image/x-icon',
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
