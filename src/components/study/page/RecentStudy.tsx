@@ -14,6 +14,8 @@ import StudyCard from '../card/StudyCard';
 const RECENT_STUDY_BOARD_CLASSES = {
   section:
     'container base-container grid grid-cols-3 max-w-[1200px] min-h-[382px] mx-auto gap-6 overflow-x-auto',
+  withoutRecent:
+    'container base-container max-w-[1200px] min-h-[382px] mx-auto gap-6 overflow-x-auto flex items-center justify-center',
 };
 
 const RECENT_STUDIES_KEY = 'recent-studies';
@@ -83,7 +85,11 @@ export default function RecentStudy() {
 
   return (
     <section
-      className={RECENT_STUDY_BOARD_CLASSES.section}
+      className={
+        recentStudies.length > 0
+          ? RECENT_STUDY_BOARD_CLASSES.section
+          : RECENT_STUDY_BOARD_CLASSES.withoutRecent
+      }
       aria-labelledby='recent-studies-heading'
     >
       {/* <h1
@@ -111,7 +117,9 @@ export default function RecentStudy() {
           );
         })
       ) : (
-        <p className='caption-base mx-auto'>아직 조회한 스터디가 없어요</p>
+        <p className='container flex items-center justify-center'>
+          아직 조회한 스터디가 없어요
+        </p>
       )}
     </section>
   );
