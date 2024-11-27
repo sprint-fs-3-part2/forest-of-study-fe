@@ -128,7 +128,7 @@
 - **함헌규**
   - Frontend
     - 재사용 가능한 공통 컴포넌트 설계 및 구현
-    - Storybook 환경 구축 및 배포
+    - Storybook 환경 구축 및 배포 [링크](https://6738bbad6db7ed66b949ad4d-mezwzzjvzt.chromatic.com/)
     - Next.js App Router를 사용한 애플리케이션 라우팅 구조 설계
   - Backend
     - Habit API 구현 및 적용
