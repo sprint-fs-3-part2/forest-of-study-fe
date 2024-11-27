@@ -1,0 +1,24 @@
+.bgBlue {
+  background-image: url('/image/blue.webp');
+}
+.bgPink {
+  background-image: url('/image/pink.webp');
+}
+.bgGreen {
+  background-image: url('/image/green.webp');
+}
+.bgYellow {
+  background-image: url('/image/yellow.webp');
+}
+.bgWall {
+  background-image: url('/image/wall.webp');
+}
+.bgDesk {
+  background-image: url('/image/desk.webp');
+}
+.bgLaptop {
+  background-image: url('/image/laptop.webp');
+}
+.bgPlant {
+  background-image: url('/image/plant.webp');
+}
