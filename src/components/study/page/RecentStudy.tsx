@@ -15,7 +15,7 @@ const RECENT_STUDY_BOARD_CLASSES = {
   section:
     'container base-container grid grid-cols-3 max-w-[1200px] min-h-[382px] mx-auto gap-6 overflow-x-auto',
   withoutRecent:
-    'container base-container max-w-[1200px] min-h-[382px] mx-auto gap-6 overflow-x-auto flex items-center justify-center',
+    'container base-container max-w-[1200px] min-h-[382px] mx-auto gap-6 overflow-x-auto flex flex-wrap',
 };
 
 const RECENT_STUDIES_KEY = 'recent-studies';
@@ -94,7 +94,7 @@ export default function RecentStudy() {
     >
       <h1
         id='recent-studies-heading'
-        className='heading-2'
+        className='w-fit h-fit col-span-full heading-2'
       >
         최근 조회한 스터디
       </h1>
@@ -118,7 +118,7 @@ export default function RecentStudy() {
           );
         })
       ) : (
-        <p className='container flex items-center justify-center'>
+          <p className='h-max col-span-full container flex items-center justify-center'>
           아직 조회한 스터디가 없어요
         </p>
       )}
