@@ -82,7 +82,9 @@
         └── config/        # 환경 설정
   ```
 
-
+## Preview 
+- https://app.supademo.com/demo/cm3z08g0t0gkx10a552fdlr9a
+  
 ### 팀원별 구현 기능 상세
 - **강대원**
   - Frontend
