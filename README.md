@@ -10,7 +10,7 @@
 |------|------|---------|
 | 강대원 | FullStack | [Github](https://github.com/Daewony) |
 | 이현우 | FullStack | [Github](https://github.com/gealot) |
-| 김지연 | FullStack | [Github](https://github.com/dani784601) |
+| 김지연 | FullStack | [Github](https://github.com/) |
 | 김태훈 | FullStack | [Github](https://github.com/Zero5338) |
 | 최혜지 | FullStack | [Github](https://github.com/heziss) |
 | 함헌규 | FullStack | [Github](https://github.com/heonq) |
@@ -36,7 +36,54 @@
 - Jira
 
 ### 팀원별 구현 기능 상세
-(작성예정)
+- 강대원
+  - Frontend
+    - 오늘의 집중 페이지 UI 구현
+    - 데스크탑/태블릿/모바일 반응형 레이아웃 최적화
+    - 타이머 기능 및 포인트 시스템 UI
+  - Backend
+    - Focus API 구현 및 문서화
+    - 포인트 시스템 로직 구현
+    - 스터디 API points 속성 확장
+      - 생성 시 points 속성 자동화
+      - 조회 응답에 points 데이터 추가
+- 이현우
+  - Frontend
+    - 스터디 생성 페이지 UI 구현
+  - Backend
+    - NestJS 프로젝트 초기 설정 및 구조화
+    - Prisma를 이용한 초기 스키마 모델링 및 마이그레이션
+      - Study, Habit, CompletedHabit, Focus, Reaction 모델 정의
+    - Swagger API 문서화 및 Render 배포
+    - Study API 구현
+      - [Swagger API 문서](https://forest-of-study-be.onrender.com/api/#studies) 참고
+- 김지연
+  - Frontend
+    - Next.js 14 프로젝트 초기 설정 및 구조화
+    - Tailwind CSS 공통 스타일 및 색상 팔레트 정의
+    - 메인 화면 스터디 목록 구현
+      - React Suspense 및 서버 컴포넌트 활용
+- 김태훈
+  - Frontend
+    - 공통 컴포넌트 설계 참여
+    - Tailwind CSS 학습 및 적용
+  - Backend
+    - 오늘의 습관 (Habit) API 구현
+    - DB 설계 검토
+- 최혜지
+  - Frontend
+    - 스터디 상세 화면 UI 및 습관 관련 컴포넌트 (공유, 수정, 삭제) 구현
+    - 습관 관련 컴포넌트 개발
+    - Next.js 및 TypeScript 학습, 적용
+  - Backend
+    - 습관 API 연동 작업
+- 함헌규
+  - Frontend
+    - 재사용 가능한 공통 컴포넌트 설계 및 구현
+    - Storybook 환경 구축 및 배포
+    - Next.js App Router를 사용한 애플리케이션 라우팅 구조 설계
+  - Backend
+    - Habit API 구현 및 적용
 
 ## 프로젝트 구조
 - Next.js의 App Router 구조를 사용하고 있습니다
