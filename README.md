@@ -134,3 +134,7 @@
     - Next.js App Router를 사용한 애플리케이션 라우팅 구조 설계
   - Backend
     - Habit API 구현 및 적용
+
+## 배포 주소 링크
+
+- <https://team2-forest-of-study.netlify.app/>
